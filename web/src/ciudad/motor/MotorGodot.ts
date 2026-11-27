@@ -2,7 +2,7 @@
 // <canvas> y la conecta con la interfaz de la página:
 //  - Godot → página: eventos 'sucre' en window ({tipo: "progreso" | "lista" | "posicion" | "captura" | "elegida"}),
 //    que actualizan EstadoVista (posición, rumbo, rendimiento) sin pasar por React;
-//  - página → Godot: window.sucreGodot.{entrar, ir, toma, capturar, marcas, origen, calidad, hora, pausar}.
+//  - página → Godot: window.sucreGodot.{entrar, ir, toma, capturar, marcas, origen, calidad, hora, pausar, tour}.
 // Las órdenes de EstadoVista (ir, toma, norte) se traducen a esas llamadas; la captura de las revisiones también.
 import type { DatosEscena } from "../revision/tipos";
 import type { EstadoVista, ServicioCaptura } from "./EstadoVista";
@@ -18,6 +18,7 @@ type FuncionesGodot = {
   calidad(nivel: string): void;
   hora(): void;
   pausar(si: boolean): void;
+  tour(): void;
 };
 
 type MotorGodotJS = { startGame(o: { onProgress?: (a: number, t: number) => void }): Promise<void> };
@@ -126,6 +127,8 @@ export class MotorGodot {
   entrar() { this.godot?.entrar(); }
   pausar(si: boolean) { this.godot?.pausar(si); }
   cambiarHora() { this.godot?.hora(); }
+  /** Empieza el tour guiado (o lo termina si está en curso): lo dirige Godot y avisa {tipo: "tour", activo}. */
+  tour() { this.godot?.tour(); }
   calidad(nivel: string) { this.godot?.calidad(nivel); }
   mostrarOrigen(origen: string, visible: boolean) { this.godot?.origen(origen, visible); }
   marcas(lista: { id: string; x: number; y: number; z: number; estado: string; elegida: boolean }[]) {

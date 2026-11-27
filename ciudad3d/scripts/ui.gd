@@ -14,6 +14,7 @@ signal mover(v: Vector2, correr: bool)
 signal minimapa_ir(x: float, z: float)
 signal minimapa_desplazar(dx: float, dz: float)
 signal cambiar_hora
+signal iniciar_tour
 
 const CAL := Color("#fbf9f4")
 const TINTA := Color("#2b1d16")
@@ -198,9 +199,14 @@ func _crear_inicio() -> void:
 	_puertas.visible = false
 	var b2 := _boton_sobrio("Caminar sus calles", true)
 	b2.pressed.connect(func(): entrar_pie.emit())
+	var b3 := _boton_sobrio("Hacer el tour guiado", false)
+	b3.pressed.connect(func():
+		entrar_pie.emit()
+		iniciar_tour.emit())
 	var b1 := _boton_sobrio("Ver desde el aire", false)
 	b1.pressed.connect(func(): entrar_aereo.emit())
 	_puertas.add_child(b2)
+	_puertas.add_child(b3)
 	b1.free()      # vista aérea desactivada por ahora
 	col.add_child(_puertas)
 
@@ -301,7 +307,11 @@ func _crear_hud() -> void:
 	_boton_hora = _boton("Noche", false)
 	_boton_hora.pressed.connect(func(): cambiar_hora.emit())
 	var caja_hora := VBoxContainer.new()
+	caja_hora.add_theme_constant_override("separation", 8)
 	caja_hora.add_child(_boton_hora)
+	var boton_tour := _boton("Tour", false)
+	boton_tour.pressed.connect(func(): iniciar_tour.emit())
+	caja_hora.add_child(boton_tour)
 	_hud.add_child(caja_hora)
 	caja_hora.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 16)
 	# minimapa debajo de la marca

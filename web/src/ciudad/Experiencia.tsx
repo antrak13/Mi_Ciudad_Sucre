@@ -39,6 +39,7 @@ export default function Experiencia() {
   const [embebido, setEmbebido] = useState(false);
   const [noche, setNoche] = useState(false);
   const [taller, setTaller] = useState(false);
+  const [tourActivo, setTourActivo] = useState(false);
   const [visibles, setVisibles] = useState<Record<string, boolean>>({ claude: true, codex: true });
   const [volumenes, setVolumenes] = useState(true);
   const [nivel, setNivel] = useState<"alta" | "media" | "baja">("alta");
@@ -64,6 +65,8 @@ export default function Experiencia() {
         if (q.has("embebido")) window.parent.postMessage({ sucre: "lista" }, window.location.origin);
       } else if (e.tipo === "posicion") {
         setNivel(e.calidad as "alta" | "media" | "baja");
+      } else if (e.tipo === "tour") {
+        setTourActivo(e.activo === true);
       } else if (e.tipo === "hora") {
         setNoche(e.hora === "noche");
       } else if (e.tipo === "elegida") {
@@ -177,10 +180,20 @@ export default function Experiencia() {
         onContextMenu={(e) => e.preventDefault()} />
 
       {!entrado && !embebido && (
-        <PantallaInicio fraccion={fraccion} detalle={detalle} lista={lista} error={error || undefined} alEntrar={() => setEntrado(true)} />
+        <PantallaInicio
+          fraccion={fraccion}
+          detalle={detalle}
+          lista={lista}
+          error={error || undefined}
+          alEntrar={(modo) => {
+            setEntrado(true);
+            if (modo === "tour") motor.tour();      // Godot empieza en cuanto se puede estar a pie
+          }}
+        />
       )}
 
-      {entrado && (
+      {/* durante el tour, Godot dirige todo (cámara, carta, láminas): la página no pone nada encima */}
+      {entrado && !tourActivo && (
         <div className="pointer-events-none absolute inset-0 z-10">
           <div className="absolute left-4 top-4 flex flex-col items-start gap-2">
             <Marca />
@@ -208,10 +221,16 @@ export default function Experiencia() {
           </div>
 
           <div className="absolute right-4 top-4 flex flex-col items-end gap-2">
-            <button onClick={cambiarHora} className="boton boton-cal pointer-events-auto shadow-[var(--shadow-panel)]"
-              title={noche ? "Cambiar a día" : "Cambiar a noche"}>
-              {noche ? <IconoSol /> : <IconoLuna />} {noche ? "Día" : "Noche"}
-            </button>
+            <div className="flex items-center gap-2">
+              <button onClick={() => motor.tour()} className="boton boton-cal pointer-events-auto shadow-[var(--shadow-panel)]"
+                title="Tour guiado por el centro histórico (Esc para salir)">
+                <IconoTour /> Tour guiado
+              </button>
+              <button onClick={cambiarHora} className="boton boton-cal pointer-events-auto shadow-[var(--shadow-panel)]"
+                title={noche ? "Cambiar a día" : "Cambiar a noche"}>
+                {noche ? <IconoSol /> : <IconoLuna />} {noche ? "Día" : "Noche"}
+              </button>
+            </div>
             <BarraRevision activo={rev.activo} pendientes={rev.revisiones.filter((r) => r.estado === "pendiente").length}
               lista={rev.lista} alAlternar={rev.alternar} alEnmarcar={rev.enmarcar} alLista={() => rev.setLista(!rev.lista)} />
             {rev.activo && rev.lista && fase.tipo === "navegar" && (
@@ -246,6 +265,14 @@ function IconoSol() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
       <circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+    </svg>
+  );
+}
+
+function IconoTour() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <polygon points="3 11 22 2 13 21 11 13 3 11" />
     </svg>
   );
 }

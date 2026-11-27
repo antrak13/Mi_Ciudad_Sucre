@@ -1,0 +1,600 @@
+{
+  "schema_version": "1.0.0",
+  "project_context": {
+    "project_name": "miciudad",
+    "city": "Sucre",
+    "country": "Bolivia",
+    "heritage_status": {
+      "designation": "Patrimonio Cultural de la Humanidad (UNESCO)",
+      "year": 1991
+    },
+    "urban_geography": {
+      "nickname": "Ciudad Blanca",
+      "layout": "Trazado colonial en damero con fachadas encaladas y tejados de teja morisca",
+      "altitude_meters_approx": 2800,
+      "surrounding_hills": [
+        {
+          "name": "Sica Sica",
+          "puquina_etymology": "Gran saber (de sicsa, saber)"
+        },
+        {
+          "name": "Churuquella",
+          "puquina_etymology": "Memoria del rayo (churu: rayo, quilla: pensar)"
+        }
+      ]
+    },
+    "tour_objective": "Recorrido radial caminable de 7 paradas desde el núcleo de la Plaza 25 de Mayo hacia manzanas aledañas, combinando el modelo 3D existente del casco histórico con fotografías reales, obras de arte, planos y archivos históricos."
+  },
+  "engine_and_ux_architecture": {
+    "navigation_modes": [
+      "walkthrough_first_person",
+      "orbital_drone_flight"
+    ],
+    "camera_state_machine": {
+      "guided_keyframes": "Cada subsegmento define posición, ángulo y distancia focal exactos.",
+      "free_orbit_override": "El usuario debe poder pausar la locución en cualquier parada para orbitar libremente el modelo 3D y luego retomar el keyframe siguiente."
+    },
+    "visual_comparison_ui": {
+      "component": "split_screen_slider_or_overlay",
+      "layers": [
+        "3d_model_miciudad",
+        "real_photo_current",
+        "historical_archive_or_artwork"
+      ],
+      "rule": "Alinear la perspectiva de la imagen real o de archivo con la cámara virtual sin ocultar por completo el modelo 3D."
+    },
+    "spatial_audio_triggers": {
+      "policy": "Solo activar audio posicional cuando el sonido tenga valor histórico documental.",
+      "active_cues": [
+        "stop_1_clock_chime_1772",
+        "stop_6_campana_de_la_libertad"
+      ],
+      "ambient_tone_plaza": "Sereno y contemplativo."
+    },
+    "micro_curiosity_hotspots": {
+      "target_main_narration_duration_sec": 60,
+      "rule": "Mantener el guion principal ágil y alojar las anécdotas secundarias en marcadores opcionales interactivos sobre los edificios."
+    }
+  },
+  "fact_checking_registry": {
+    "val_dosne_lions": [
+      {
+        "claim": "Presencia en la Plaza 25 de Mayo desde 1909",
+        "status": "verified",
+        "detail": "Inauguración oficial el 24 de mayo de 1909, tras iniciativa del 3 de febrero de 1907."
+      },
+      {
+        "claim": "Fundidos en Val d'Osne, París",
+        "status": "verified",
+        "detail": "Escultura principal contratada a M. Fontaine; fundición ejecutada por Val d'Osne (58 Bd. Voltaire, París), incluyendo la estatua de Sucre y los dos leones."
+      },
+      {
+        "claim": "Fabricados en bronce",
+        "status": "corrected",
+        "detail": "Error frecuente en redes sociales. Según evaluación técnica documentada en 2019, los leones son de hierro fundido."
+      },
+      {
+        "claim": "Pronóstico de 15 años de vida útil restante",
+        "status": "verified_with_date_correction",
+        "detail": "El diagnóstico fue emitido en mayo de 2019 por Ramón Delgado (taller de restauración del Museo Colonial Charcas) tras limpieza y evaluación junto a Gunnar Arancibia (USFX) con apoyo municipal. No es un estudio original de 2023; proyecta un horizonte crítico hacia 2034."
+      },
+      {
+        "claim": "Impacto de rayo y pérdida de fragmento de cola",
+        "status": "verified",
+        "detail": "Un león fue impactado por un rayo años atrás; sumado a mala conservación previa y al desgaste por personas que trepan sobre su lomo para fotografiarse, en mayo de 2019 se desprendió un pedazo de cola y se reportaron rajaduras en la espalda."
+      },
+      {
+        "claim": "Levantamiento 3D por fotogrametría",
+        "status": "verified",
+        "detail": "Realizado en enero de 2023 por el especialista chileno en visualización 3D Marcelo Ramos López y publicado en Sketchfab (usuario: marcelo_ramos_lopez)."
+      }
+    ],
+    "other_clarifications": [
+      {
+        "topic": "Estatuas de la torre de la Catedral",
+        "correction": "Representan a los 12 apóstoles y los 4 evangelistas (algunas guías turísticas simplifican erróneamente como los 4 santos patronos)."
+      },
+      {
+        "topic": "Monumento a Jayme de Zudáñez",
+        "correction": "Aunque una crónica menciona a Zudáñez en la Plaza 25 de Mayo, las fuentes principales ubican allí a Sucre, Bolívar y Monteagudo; el monumento universitario a Zudáñez (1969) se encuentra en la plazuela homónima de la calle Olañeta."
+      },
+      {
+        "topic": "Teatro 3 de Febrero (datos faltantes)",
+        "limitation": "No existen registros verificados de mediciones acústicas ni planimetría interior en las fuentes recopiladas; enfocar el tour en su fachada anexa al Palacio Municipal y en su historia operativa contemporánea."
+      }
+    ]
+  },
+  "tour_route": [
+    {
+      "stop_number": 1,
+      "id": "catedral_metropolitana",
+      "name": "Catedral Metropolitana de Sucre",
+      "alternate_names": [
+        "Basílica Menor de Nuestra Señora de Guadalupe",
+        "Catedral de la Inmaculada Concepción",
+        "Catedral Primada de Bolivia"
+      ],
+      "location": "Esquina de la Plaza 25 de Mayo y calle Estudiantes",
+      "key_dates": {
+        "construction_range": "1551 - 1712 (otras fuentes mencionan inicio en 1552 o 1559)",
+        "tower_year": 1692,
+        "portals_approx_year": 1700,
+        "clock_year": 1772,
+        "municipal_heritage_declaration": 2018,
+        "recent_restoration": "2017 - 2021"
+      },
+      "architectural_style": "Exterior barroco mestizo con trazado en tres naves; interior neoclásico.",
+      "camera_segments": [
+        {
+          "sequence_order": 1,
+          "focus_target": "Atrio, balaustrada y Rumi Cruz",
+          "camera_directive": {
+            "mode": "walkthrough_first_person",
+            "movement": "Paneo horizontal a nivel peatonal rodeando la balaustrada de piedra canteada hasta hacer primer plano en el ángulo saliente.",
+            "framing_target": "Cruz de piedra en el ángulo del atrio"
+          },
+          "narration_points": [
+            "Función de la Catedral como ancla visual y urbana de la Plaza 25 de Mayo.",
+            "Identificación de la balaustrada de piedra canteada y la cruz tradicional conocida como 'Rumi Cruz'."
+          ],
+          "visual_overlays": [
+            {
+              "type": "real_photo",
+              "description": "Primer plano de la Rumi Cruz y textura de la piedra canteada."
+            }
+          ]
+        },
+        {
+          "sequence_order": 2,
+          "focus_target": "Portadas barrocas (principal y lateral) y puerta de madera",
+          "camera_directive": {
+            "mode": "orbital_close_up",
+            "movement": "Desplazamiento orbital desde la portada lateral (hacia la plaza) hasta la portada principal (calle Estudiantes), con zoom final sobre la hoja de madera.",
+            "framing_target": "Relieves líticos de c. 1700, tachuelas metálicas y aldaba central"
+          },
+          "narration_points": [
+            "Ambas portadas fueron labradas en piedra hacia 1700 en estilo barroco mestizo.",
+            "Adaptación americana: la escala monumental del barroco europeo (comparable en ambición a St. Paul's de Londres) se vio contenida en una fachada ajustada al damero colonial."
+          ],
+          "curiosities_and_hotspots": [
+            "Crítica histórica a la portada lateral: registrada en estudios de arte como 'un estilo que no correspondía al estatus' de la sede metropolitana."
+          ],
+          "visual_overlays": [
+            {
+              "type": "real_photo_macro",
+              "description": "Detalles del tallado en piedra, puerta de madera con tachuelas metálicas y aldaba central ornamentada."
+            }
+          ]
+        },
+        {
+          "sequence_order": 3,
+          "focus_target": "Torre esquinera (1692), estatuas y reloj londinense (1772)",
+          "camera_directive": {
+            "mode": "low_angle_tilt_up",
+            "movement": "Ascenso vertical en contrapicado por los tres cuerpos de la torre hasta su remate piramidal, finalizando con zoom a una de las 4 caras del reloj.",
+            "framing_target": "Decoración cerámica del campanario, esculturas esquineras y esfera del reloj"
+          },
+          "narration_points": [
+            "Ubicada intencionalmente en la esquina de la intersección vial en 1692 para romper la alineación plana de la manzana y servir de hito visible desde los cerros.",
+            "Esculturas en balcones y esquinas: representan a los 12 apóstoles y los 4 evangelistas.",
+            "Reloj de cuatro caras fabricado en Londres en 1772."
+          ],
+          "curiosities_and_hotspots": [
+            "El reloj de 1772 sigue en funcionamiento en la actualidad."
+          ],
+          "audio_cue": "stop_1_clock_chime_1772",
+          "visual_overlays": [
+            {
+              "type": "real_photo_telephoto",
+              "description": "Tomas de detalle de la cerámica del campanario, estatuas y esferas del reloj."
+            },
+            {
+              "type": "historical_artwork",
+              "description": "Gouache de 1840 de la Plaza 25 de Mayo e Iglesia Catedral (referenciado en SEDICI-UNLP)."
+            }
+          ]
+        },
+        {
+          "sequence_order": 4,
+          "focus_target": "Interior neoclásico y Museo de la Catedral (puerta como portal)",
+          "camera_directive": {
+            "mode": "portal_transition",
+            "movement": "Acercamiento frontal a las puertas abiertas para disparar galería de interiores (si no hay geometría 3D interna).",
+            "framing_target": "Umbral de entrada principal"
+          },
+          "narration_points": [
+            "Contraste entre el exterior barroco y un interior de tres naves de estilo neoclásico pintado en blanco con detalles dorados, candelabros de cristal, terciopelo rojo, vitrales y platería de Potosí.",
+            "Presencia de criptas con restos de personalidades ilustres y nobles.",
+            "Museo de la Catedral: 10 salas con arte sacro de los siglos XVI al XVIII."
+          ],
+          "curiosities_and_hotspots": [
+            "Virgen de Guadalupe (patrona de Sucre), pintada en 1601 por Fray Diego de Ocaña: fue laminada en oro y adornada ordenadamente con diamantes, esmeraldas y perlas como ofrendas por milagros; por su valor solo se visita bajo supervisión."
+          ],
+          "visual_overlays": [
+            {
+              "type": "real_photo_interior",
+              "description": "Nave central blanca y oro, altar de plata, museo sacro y pintura de la Virgen de Guadalupe de 1601."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stop_number": 2,
+      "id": "plaza_25_de_mayo",
+      "name": "Plaza 25 de Mayo",
+      "alternate_names": [
+        "Plaza Mayor",
+        "Plaza de Armas"
+      ],
+      "location": "Núcleo del casco histórico (altitud reportada entre 2.798 y 2.809 m s. n. m.)",
+      "dimensions_reference": "Aprox. 200 x 200 m según documentación referencial",
+      "heritage_status": "Patrimonio Cultural e Histórico de Bolivia (Ley Nº 531 de 2014)",
+      "camera_segments": [
+        {
+          "sequence_order": 1,
+          "focus_target": "Trazado espacial y evolución colonial",
+          "camera_directive": {
+            "mode": "top_down_drone",
+            "movement": "Vuelo cenital que revela las diagonales y senderos circulares, descendiendo luego hacia los paseos peatonales.",
+            "framing_target": "Geometría completa de la plaza y arboleda"
+          },
+          "narration_points": [
+            "En la época colonial temprana el entorno reunía la Catedral, el Cabildo, la cárcel, la universidad y un rancherío de indios.",
+            "Embellecida desde la gestión del gobernador García Pizarro con aceras y árboles de molle.",
+            "Tradición social de las 'vueltas románticas': hombres caminando de derecha a izquierda y mujeres en sentido opuesto para cruzarse."
+          ],
+          "curiosities_and_hotspots": [
+            "Fuente desaparecida 'La Peregrina': esculpida en el siglo XVI por un español de apellido Oviedo; ocupó la plaza principal hasta 1909, cuando fue retirada (hoy se encuentra en la plaza Pedro Anzúrez en La Recoleta)."
+          ],
+          "visual_overlays": [
+            {
+              "type": "historical_artwork",
+              "description": "Gouache de 1840 para comparar el aspecto decimonónico con el actual."
+            },
+            {
+              "type": "real_photo",
+              "description": "Fotografía actual de la fuente La Peregrina en La Recoleta."
+            }
+          ]
+        },
+        {
+          "sequence_order": 2,
+          "focus_target": "Monumento al Mariscal Sucre y los dos leones de Val d'Osne",
+          "camera_directive": {
+            "mode": "orbital_close_up",
+            "movement": "Órbita descendente desde la estatua de Sucre hacia la base de piedra, terminando en rasante sobre el lomo y la cola de los leones.",
+            "framing_target": "Pedestal, estatua central y escultura de los dos leones"
+          },
+          "narration_points": [
+            "Iniciativa del 3 de febrero de 1907 por el Gral. Dr. Pastor Sainz (donación inicial de 1.000 libras esterlinas más suscripción popular) bajo un comité presidido por Mamerto Urriolagoitia.",
+            "Estatua diseñada en París por M. Fontaine y fundida junto a los dos leones por la casa Val d'Osne (58 Bd. Voltaire).",
+            "Pedestal de piedra licitado a Pedro Cors por Bs. 16.000 (sin incluir canteras) y supervisado por Carlos Doynel por Bs. 250; inaugurado el 24 de mayo de 1909.",
+            "Estado físico de los leones: son de hierro fundido; uno recibió un rayo años atrás y ambos sufren rajaduras en la espalda porque visitantes y niños se suben para fotografiarse.",
+            "En mayo de 2019 se desprendió un fragmento de cola y el restaurador Ramón Delgado (Museo Colonial Charcas), tras evaluación con Gunnar Arancibia (USFX), advirtió un límite de 15 años y recomendó cercarlos.",
+            "Preservación digital: en enero de 2023 el especialista chileno Marcelo Ramos López los escaneó mediante fotogrametría para conservarlos virtualmente."
+          ],
+          "visual_overlays": [
+            {
+              "type": "historical_photo",
+              "description": "Fotografías del Libro Primer Centenario de Bolivia mostrando la plaza y el monumento."
+            },
+            {
+              "type": "real_photo_macro",
+              "description": "Fotos de detalle de las fisuras, deterioro del hierro fundido y cola dañada."
+            },
+            {
+              "type": "photogrammetry_reference",
+              "description": "Modelo 3D de Marcelo Ramos en Sketchfab (marcelo_ramos_lopez)."
+            }
+          ]
+        },
+        {
+          "sequence_order": 3,
+          "focus_target": "Piletas y monumentos a Bolívar y Monteagudo",
+          "camera_directive": {
+            "mode": "panoramic_sweep",
+            "movement": "Paneo horizontal bajo conectando las piletas con las estatuas laterales.",
+            "framing_target": "Cuatro piletas labradas en piedra y estatuas de próceres"
+          },
+          "narration_points": [
+            "Ornamentación complementada por cuatro piletas labradas en piedra.",
+            "Monumentos a Simón Bolívar y Bernardo de Monteagudo (erigido por ley de 1906 y entregado en 1908 en honor al participante de la insurrección de 1809 y ministro en Perú)."
+          ],
+          "visual_overlays": [
+            {
+              "type": "real_photo",
+              "description": "Vistas de las estatuas y piletas de piedra."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stop_number": 3,
+      "id": "palacio_de_gobierno",
+      "name": "Palacio de Gobierno (Palacio Nacional / Gobernación de Chuquisaca)",
+      "location": "Plaza 25 de Mayo, contiguo a la Catedral Metropolitana, esquina calle Bustillos",
+      "architectural_style": "Ecléctico afrancesado con mansarda",
+      "camera_segments": [
+        {
+          "sequence_order": 1,
+          "focus_target": "Fachada principal, mansarda y cuerpos laterales",
+          "camera_directive": {
+            "mode": "low_angle_tilt_up",
+            "movement": "Desplazamiento lateral desde la Catedral hacia la fachada, elevando la cámara desde el zócalo hasta la mansarda.",
+            "framing_target": "Cuerpos laterales de cuatro calles con columnas pareadas anilladas en el tercio bajo y dos ventanas superpuestas"
+          },
+          "narration_points": [
+            "Considerado por cronistas y viajeros como una de las fachadas más bellas de Sucre.",
+            "Evolución institucional: reemplazó la imagen colonial del antiguo Palacio Arzobispal (primera sede del gobierno republicano) por un diseño afrancesado."
+          ],
+          "visual_overlays": [
+            {
+              "type": "historical_engraving",
+              "description": "Grabado del antiguo Palacio Arzobispal (reproducido en Correo del Sur, 2021)."
+            },
+            {
+              "type": "real_photo",
+              "description": "Detalle arquitectónico de la mansarda y las columnas pareadas anilladas."
+            }
+          ]
+        },
+        {
+          "sequence_order": 2,
+          "focus_target": "Esquina calle Bustillos y distribución interna de 1893",
+          "camera_directive": {
+            "mode": "orbital_corner_shift",
+            "movement": "Giro por la esquina hacia el flanco de la calle Bustillos, con elevación oblicua para sugerir la profundidad de los patios internos.",
+            "framing_target": "Acceso lateral de calle Bustillos y planta de patios"
+          },
+          "narration_points": [
+            "Según el informe de obra de 1893, se dividió en tres secciones: Sección Oficial (entrada por Plaza 25 de Mayo con Secretaría Privada, gran salón de recepciones diplomáticas, Ministerios y Caja Nacional con caja fuerte), Sección Privada (residencia del Presidente con entrada independiente por calle Bustillos y conexión en planta alta con su Secretaría) y Sección de Seguridad.",
+            "Distribución interior en tres patios: el primero con galería de arcos, el segundo habilitado en una época como cuartel y el tercero destinado a huerta."
+          ],
+          "curiosities_and_hotspots": [
+            "Paradoja de 1899: tras la Guerra Federal, el Presidente huyó y los poderes Ejecutivo y Legislativo pasaron de facto a La Paz; el edificio dejó de ser Palacio Presidencial y pasó a la Prefectura hasta convertirse en Gobernación tras la Constitución de 2009."
+          ],
+          "visual_overlays": [
+            {
+              "type": "schematic_overlay",
+              "description": "Diagrama conceptual de las 3 secciones (1893) y 3 patios superpuesto al volumen 3D."
+            },
+            {
+              "type": "real_photo_interior",
+              "description": "Galería de arcos del primer patio y salón diplomático."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stop_number": 4,
+      "id": "casa_de_la_libertad",
+      "name": "Casa de la Libertad y Patio Histórico USFX",
+      "location": "Sobre la Plaza 25 de Mayo",
+      "key_dates": {
+        "original_construction": 1621,
+        "renovations": "Siglo XVIII (c. 1700)",
+        "independence_declaration": "1825-07-21",
+        "independence_act_signed": "1825-08-06",
+        "national_congress_seat": "1825 - 1899 (referenciado también hasta 1898)",
+        "current_administration_since": 1995
+      },
+      "administration": "Fundación Cultural del Banco Central de Bolivia",
+      "camera_segments": [
+        {
+          "sequence_order": 1,
+          "focus_target": "Arcada de piedra y patio colonial",
+          "camera_directive": {
+            "mode": "walkthrough_first_person",
+            "movement": "Ingreso frontal atravesando la arcada de piedra hasta abrir el plano en el centro del patio colonial blanco.",
+            "framing_target": "Arcada lítica y claustro blanco interior"
+          },
+          "narration_points": [
+            "Antiguo conjunto universitario de los jesuitas perteneciente a la Universidad Mayor Real y Pontificia de San Francisco Xavier.",
+            "Escenario de la firma del Acta de Independencia de Bolivia el 6 de agosto de 1825 (redactada por José Mariano Serrano y José María Mendizábal), de la primera Constitución y sede del Congreso hasta fines del siglo XIX."
+          ],
+          "visual_overlays": [
+            {
+              "type": "real_photo",
+              "description": "Patio colonial y acceso hacia el Salón de la Independencia."
+            }
+          ]
+        },
+        {
+          "sequence_order": 2,
+          "focus_target": "Salón de la Independencia y Patio USFX",
+          "camera_directive": {
+            "mode": "portal_transition",
+            "movement": "Enfoque hacia el Salón de la Independencia ubicado justo frente a la entrada principal, con desvío conceptual al vecino patio histórico universitario.",
+            "framing_target": "Acceso al Salón de la Independencia"
+          },
+          "narration_points": [
+            "Salón de la Independencia: destaca por su artesonado floral restaurado en el techo, la sillería histórica, el Acta original bajo urna, banderas, la espada ceremonial de Bolívar y retratos de Bolívar, Sucre y José Ballivián.",
+            "Alberga el mausoleo de Juana Azurduy de Padilla, fallecida en Sucre en extrema pobreza el 25 de mayo de 1862 a los 82 años."
+          ],
+          "curiosities_and_hotspots": [
+            "En un ángulo del Salón de la Independencia se conserva un ataúd antiguo utilizado para llevar a enterrar al rector y a los docentes universitarios.",
+            "Debate iconográfico sobre Juana Azurduy (investigación de Norberto Benjamín Torres): varias pinturas la muestran con rasgos varoniles por influencia de la prosa exagerada de Samuel Velasco Flor (quien nunca la vio en batalla), en contraste con testimonios de época sucrenses como el de Lindaura Anzoátegui y su partida de bautismo en San Pedro.",
+            "Desvío anexo: Patio Histórico de la Universidad San Francisco Xavier y su antigua biblioteca colonial.",
+            "Nota operativa para visitantes reales: la entrada requiere visita guiada y permiso aparte para fotografías."
+          ],
+          "visual_overlays": [
+            {
+              "type": "real_photo_interior",
+              "description": "Artesonado floral, sillería, urna del Acta y mausoleo de Juana Azurduy."
+            },
+            {
+              "type": "historical_painting",
+              "description": "Óleo del Congreso Constituyente, retratos de próceres y comparativa iconográfica de Juana Azurduy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stop_number": 5,
+      "id": "alcaldia_y_teatro_3_de_febrero",
+      "name": "Alcaldía Municipal y Teatro 3 de Febrero",
+      "location": "Frente a la Plaza 25 de Mayo y locales anexos al Palacio Municipal",
+      "architectural_style": "Ecléctico afrancesado (Palacio Municipal)",
+      "data_gaps": [
+        "No hay mediciones acústicas ni planimetría detallada de la sala interior del Teatro 3 de Febrero en las fuentes verificadas."
+      ],
+      "camera_segments": [
+        {
+          "sequence_order": 1,
+          "focus_target": "Fachada de la Alcaldía Municipal",
+          "camera_directive": {
+            "mode": "lateral_tracking_shot",
+            "movement": "Travelling paralelo frente al Palacio Municipal resaltando balcones y cornisas.",
+            "framing_target": "Frontis ecléctico afrancesado de la Alcaldía"
+          },
+          "narration_points": [
+            "Ejemplo del estilo ecléctico afrancesado de cambio de siglo en Sucre, junto al Palacio de Gobierno, La Glorieta y La Florida.",
+            "Asentada en la manzana histórica vinculada al antiguo Cabildo y la cárcel pública colonial."
+          ],
+          "visual_overlays": [
+            {
+              "type": "historical_postcard",
+              "description": "Postales antiguas del Palacio Municipal y entorno de la plaza."
+            }
+          ]
+        },
+        {
+          "sequence_order": 2,
+          "focus_target": "Fachada del Teatro 3 de Febrero",
+          "camera_directive": {
+            "mode": "lateral_tracking_shot",
+            "movement": "Continuación lateral por la calle adyacente aislando el frontis del teatro adaptado junto al Palacio Municipal.",
+            "framing_target": "Fachada exterior del Teatro 3 de Febrero"
+          },
+          "narration_points": [
+            "Escenario más emblemático de Sucre, adaptado en locales anexos al Palacio Municipal; sede de eventos como el X Festival Internacional de la Cultura y presentaciones del Teatro de los Andes (por ejemplo, Hamlet con Gonzalo Callejas).",
+            "Realidad de conservación documentada en 2015: su encargado Juan Carlos Muñoz destacó que probablemente era el único teatro de Bolivia activo los 365 días del año pese a operar con un sistema de tramoya precario tras una refacción criticada de 2009 (PRAHS), antes de atravesar periodos de inhabilitación reportados en 2016."
+          ],
+          "visual_overlays": [
+            {
+              "type": "real_photo_interior",
+              "description": "Fotografías reales de la sala, el telón, el escenario y funciones teatrales contemporáneas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stop_number": 6,
+      "id": "iglesia_de_san_francisco",
+      "name": "Iglesia de San Francisco (Basílica de San Francisco de Charcas)",
+      "location": "Plazuela Juan Frías de Herrán, a pocas cuadras de la Plaza 25 de Mayo",
+      "camera_segments": [
+        {
+          "sequence_order": 1,
+          "focus_target": "Frontis y campanario de la Campana de la Libertad",
+          "camera_directive": {
+            "mode": "low_angle_tilt_up_with_vector_line",
+            "movement": "Encuadre desde la plazuela subiendo hacia el campanario; opcionalmente trazar una línea aérea luminosa conectando la torre con la Plaza 25 de Mayo.",
+            "framing_target": "Campanario de la iglesia de San Francisco"
+          },
+          "narration_points": [
+            "El 25 de mayo de 1809, ante el arresto de Jaime de Zudáñez, el repique de esta campana convocó al vecindario hacia la plaza principal para exigir su liberación, detonando la Revolución de Chuquisaca ('Primer Grito Libertario de América').",
+            "Conocida desde entonces como la 'Campana de la Libertad', evocada en el Himno a Sucre y tañida cada 25 de mayo."
+          ],
+          "audio_cue": "stop_6_campana_de_la_libertad",
+          "visual_overlays": [
+            {
+              "type": "real_photo",
+              "description": "Fachada, campanario y actos cívicos conmemorativos del 25 de mayo."
+            },
+            {
+              "type": "historical_map",
+              "description": "Planos históricos de Sucre (referencia cartográfica 1639-2010) mostrando la proximidad a la Plaza Mayor."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stop_number": 7,
+      "id": "convento_san_felipe_neri",
+      "name": "Convento e Iglesia de San Felipe Neri",
+      "location": "Centro del casco antiguo, esquina frente al convento de La Merced",
+      "key_dates": {
+        "completed": 1799
+      },
+      "architectural_style": "Neoclásico colonial, edificado con piedra del cerro Churuquella",
+      "camera_segments": [
+        {
+          "sequence_order": 1,
+          "focus_target": "Claustro, iglesia y ascenso a las terrazas",
+          "camera_directive": {
+            "mode": "orbital_drone_flight",
+            "movement": "Recorrido desde el claustro hacia las azoteas de ladrillo vidriado, culminando en un paneo lento de 360 grados sobre el casco histórico.",
+            "framing_target": "Terrazas de ladrillo vidriado y mar de tejados de teja morisca y muros blancos"
+          },
+          "narration_points": [
+            "Concluido en 1799 con piedra extraída del cerro Churuquella.",
+            "Paradoja arquitectónica: el interior del templo resulta sobrio frente a la Catedral, aunque resguardó importantes partituras coloniales hoy preservadas/estudiadas en el ABNB, mientras sus terrazas superiores ofrecen las mejores vistas panorámicas de la Ciudad Blanca."
+          ],
+          "visual_overlays": [
+            {
+              "type": "real_photo_panoramic",
+              "description": "Fotografías reales al atardecer desde las terrazas de ladrillo vidriado sobre los tejados moriscos."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "optional_future_expansions": {
+    "description": "Puntos visibles en el paneo panorámico final desde San Felipe Neri para futuras fases de miciudad.",
+    "targets": [
+      {
+        "id": "la_recoleta_y_san_lazaro",
+        "name": "Mirador y Convento de La Recoleta / Iglesia de San Lázaro",
+        "highlights": [
+          "Plaza Pedro Anzúrez, ubicación actual de la fuente 'La Peregrina' (trasladada desde la Plaza 25 de Mayo en 1909).",
+          "Iglesia de San Lázaro, citada en guías locales como la iglesia más antigua de Bolivia."
+        ]
+      },
+      {
+        "id": "parque_bolivar_y_plaza_libertad",
+        "name": "Parque Simón Bolívar, Tribunal Supremo y Plaza Libertad",
+        "highlights": [
+          "Fuente 'Elena' o de Las Musas: tres cuerpos con platos, cuatro rostros mitológicos, un niño central y dos musas europeas.",
+          "Réplica metálica en pequeña escala de la Torre Eiffel junto al Parque Bolívar.",
+          "Columna de la Plaza Libertad y edificio del Tribunal Supremo de Justicia."
+        ]
+      }
+    ]
+  },
+  "archive_and_asset_sources": {
+    "repositories": [
+      {
+        "name": "Archivo y Biblioteca Nacionales de Bolivia (ABNB) y Archivo Catedral de Sucre",
+        "material": "Colecciones de fotografías, mapas, partituras y documentos inscritos en Memoria del Mundo de la UNESCO; bibliografía cartográfica como 'Sucre a través de sus planos 1639-2010' (1992)."
+      },
+      {
+        "name": "Repositorio SEDICI (UNLP)",
+        "material": "Referencia al gouache de 1840 de la Plaza 25 de Mayo e Iglesia Catedral."
+      },
+      {
+        "name": "Grabado de Guamán Poma de Ayala",
+        "material": "Referencia colonial temprana al nombre Chuquisaca."
+      },
+      {
+        "name": "Libro Primer Centenario de Bolivia",
+        "material": "Fotografías históricas de la Plaza 25 de Mayo y del monumento a Antonio José de Sucre."
+      },
+      {
+        "name": "Hemeroteca local (Correo del Sur) y archivo comparativo de fuentes",
+        "material": "Grabado del antiguo Palacio Arzobispal y registro fotográfico de fuentes alteradas (como la Fuente del Inisterio, que pasó de cuatro serpientes de piedra originales a tres actuales, y la Fuente de los Cisnes, que perdió serafines, cisnes y tortugas)."
+      },
+      {
+        "name": "Sketchfab (marcelo_ramos_lopez)",
+        "material": "Referencia de reconstrucción fotogramétrica 3D de los leones (2023)."
+      }
+    ]
+  }
+}
