@@ -1,0 +1,450 @@
+{
+  "_leeme": "Personajes que se colocan en la ciudad Godot y sus encuentros. El texto de cada encuentro NO va aquí: sale de personas/encuentros/guiones.md (sección con el mismo id). ciudad3d/herramientas/personajes.py junta las dos cosas y copia los modelos a ciudad3d/datos/personajes/. Coordenadas en metros de la ciudad (x, z; z hacia el sur). 'mira_a' = punto hacia el que mira en reposo. 'mecanica' = ciclo de clips en reposo. 'acompana' = sigue a otro personaje y no tiene carta. 'movimiento' = cómo se mueve (modo pasear/huir/apartarse/rondar, clip de andar, vel m/s, radio de su ronda, paradas = clips de su mecánica en cada parada; sigue_a = camina junto a otro sin dejar de tener carta); ver scripts/personajes/personaje.gd.",
+  "personajes": [
+    {
+      "id": "mariana_zudanez",
+      "nombre": "Mariana Zudáñez",
+      "epoca": "25 de mayo de 1809",
+      "tipo": "hecho",
+      "modelo": "web/public/models/ciudad/claude/personajes/mariana_zudanez/mariana_zudanez.glb",
+      "retrato": "mariana_zudanez.png",
+      "lugar": {
+        "x": -227.4,
+        "z": 230.5,
+        "mira_a": [
+          -258.0,
+          236.0
+        ]
+      },
+      "mecanica": [
+        "reposo_inquieta",
+        "reposo_inquieta",
+        "mirar_atras",
+        "reposo_inquieta",
+        "llamar_mano"
+      ],
+      "movimiento": {
+        "modo": "pasear",
+        "clip": "caminar_rapido",
+        "vel": 1.5,
+        "radio": 6,
+        "paradas": 1
+      },
+      "gesto_invita": "llamar_mano",
+      "omitir_gestos": [
+        "correr_falda"
+      ],
+      "camara": {
+        "lado": 1,
+        "distancia": 2.4
+      }
+    },
+    {
+      "id": "jaime_zudanez",
+      "nombre": "Jaime Zudáñez",
+      "epoca": "25 y 26 de mayo de 1809",
+      "tipo": "testimonio",
+      "modelo": "web/public/models/ciudad/codex/personajes/jaime_zudanez/jaime_zudanez.glb",
+      "retrato": "jaime_zudanez.png",
+      "lugar": {
+        "x": -259.0,
+        "z": 229.5,
+        "mira_a": [
+          -215.0,
+          215.0
+        ]
+      },
+      "mecanica": [
+        "tamborilear_caja",
+        "reposo",
+        "tamborilear_caja",
+        "tamborilear_caja",
+        "reposo"
+      ],
+      "movimiento": {
+        "modo": "pasear",
+        "clip": "caminar",
+        "vel": 0.8,
+        "radio": 4,
+        "paradas": 2
+      },
+      "gesto_invita": "negar",
+      "camara": {
+        "lado": -1,
+        "distancia": 2.4
+      }
+    },
+    {
+      "id": "quitacapas",
+      "nombre": "Francisco Ríos, el Quitacapas",
+      "epoca": "25 al 28 de mayo de 1809",
+      "tipo": "hecho",
+      "modelo": "web/public/models/ciudad/codex/personajes/quitacapas/quitacapas.glb",
+      "retrato": "quitacapas.png",
+      "lugar": {
+        "x": -203.0,
+        "z": 211.5,
+        "mira_a": [
+          -177.0,
+          212.0
+        ]
+      },
+      "mecanica": [
+        "reposo",
+        "reir",
+        "reposo",
+        "mostrar_llave",
+        "reposo",
+        "lanzar_monedas"
+      ],
+      "movimiento": {
+        "modo": "pasear",
+        "clip": "fanfarron_caminar",
+        "vel": 1.0,
+        "radio": 10,
+        "paradas": 2
+      },
+      "gesto_invita": "mostrar_llave",
+      "camara": {
+        "lado": 1,
+        "distancia": 2.6
+      }
+    },
+    {
+      "id": "zambito",
+      "nombre": "El zambito",
+      "acompana": "quitacapas",
+      "modelo": "web/public/models/ciudad/codex/personajes/zambito/zambito.glb",
+      "lugar": {
+        "x": -205.0,
+        "z": 213.2,
+        "mira_a": [
+          -177.0,
+          212.0
+        ]
+      },
+      "mecanica": [
+        "reposo",
+        "cargar_bulto",
+        "reposo",
+        "mirar_atras"
+      ],
+      "movimiento": {
+        "clip": "caminar"
+      }
+    },
+    {
+      "id": "diego_de_ocana",
+      "nombre": "Fray Diego de Ocaña",
+      "epoca": "1601-1602",
+      "tipo": "hecho",
+      "modelo": "web/public/models/ciudad/antigravity/personajes/diego_de_ocana/diego_de_ocana.glb",
+      "retrato": "diego_de_ocana.png",
+      "lugar": {
+        "x": -221.5,
+        "z": 276.7,
+        "mira_a": [
+          -202.0,
+          259.7
+        ]
+      },
+      "mecanica": [
+        "pintar",
+        "pintar",
+        "retroceder_mirar_cuadro"
+      ],
+      "movimiento": {
+        "modo": "pasear",
+        "clip": "caminar",
+        "vel": 0.7,
+        "radio": 3,
+        "paradas": 3
+      },
+      "gesto_invita": "saludar",
+      "camara": {
+        "lado": 1,
+        "distancia": 2.4
+      }
+    },
+    {
+      "id": "moxo",
+      "nombre": "Benito María de Moxó",
+      "epoca": "1807-1809",
+      "tipo": "hecho",
+      "modelo": "web/public/models/ciudad/claude/personajes/moxo_dia/moxo_dia.glb",
+      "retrato": "moxo.png",
+      "lugar": {
+        "x": -216.9,
+        "z": 282.0,
+        "mira_a": [
+          -197.4,
+          265.0
+        ]
+      },
+      "mecanica": [
+        "examinar_lupa",
+        "examinar_lupa",
+        "reposo",
+        "arrugar_papel",
+        "examinar_lupa"
+      ],
+      "movimiento": {
+        "modo": "pasear",
+        "clip": "caminar",
+        "vel": 0.8,
+        "radio": 6,
+        "paradas": 2
+      },
+      "gesto_invita": "saludar",
+      "camara": {
+        "lado": 1,
+        "distancia": 2.4
+      }
+    },
+    {
+      "id": "domingo_de_santo_tomas",
+      "nombre": "Fray Domingo de Santo Tomás",
+      "epoca": "1563-1570",
+      "tipo": "hecho",
+      "modelo": "web/public/models/ciudad/codex/personajes/domingo_de_santo_tomas/domingo_de_santo_tomas.glb",
+      "retrato": "domingo_de_santo_tomas.png",
+      "lugar": {
+        "x": -226.1,
+        "z": 271.4,
+        "mira_a": [
+          -206.6,
+          254.4
+        ]
+      },
+      "mecanica": [
+        "leer_libro",
+        "leer_libro",
+        "reposo",
+        "leer_libro"
+      ],
+      "movimiento": {
+        "modo": "pasear",
+        "clip": "caminar",
+        "vel": 0.7,
+        "radio": 6,
+        "paradas": 2
+      },
+      "gesto_invita": "saludar",
+      "camara": {
+        "lado": -1,
+        "distancia": 2.4
+      }
+    },
+    {
+      "id": "aguatero",
+      "nombre": "El aguatero",
+      "epoca": "1639",
+      "tipo": "hecho",
+      "modelo": "web/public/models/ciudad/antigravity/personajes/aguatero/aguatero.glb",
+      "retrato": "aguatero.png",
+      "lugar": {
+        "x": -197.0,
+        "z": 160.0,
+        "mira_a": [
+          -180.0,
+          175.0
+        ]
+      },
+      "mecanica": [
+        "llenar_botija",
+        "reposo",
+        "cargar_yugo",
+        "reposo"
+      ],
+      "movimiento": {
+        "modo": "pasear",
+        "clip": "caminar",
+        "vel": 0.9,
+        "radio": 10,
+        "paradas": 2
+      },
+      "gesto_invita": "saludar",
+      "camara": {
+        "lado": 1,
+        "distancia": 2.4
+      }
+    },
+    {
+      "id": "francisco_argandona",
+      "nombre": "Francisco Argandoña",
+      "epoca": "1907",
+      "tipo": "hecho",
+      "modelo": "web/public/models/ciudad/antigravity/personajes/francisco_argandona/francisco_argandona.glb",
+      "retrato": "francisco_argandona.png",
+      "lugar": {
+        "x": -140.0,
+        "z": 240.0,
+        "mira_a": [
+          -128.0,
+          252.0
+        ]
+      },
+      "mecanica": [
+        "reposo",
+        "presentar_automovil",
+        "reposo",
+        "senalar"
+      ],
+      "movimiento": {
+        "modo": "pasear",
+        "clip": "caminar",
+        "vel": 0.9,
+        "radio": 9,
+        "paradas": 2
+      },
+      "gesto_invita": "reverencia_anfitrion",
+      "omitir_gestos": [
+        "sentado_carruaje"
+      ],
+      "camara": {
+        "lado": 1,
+        "distancia": 2.5
+      }
+    },
+    {
+      "id": "clotilde_urioste",
+      "nombre": "Clotilde Urioste de Argandoña",
+      "epoca": "1907",
+      "tipo": "hecho",
+      "modelo": "web/public/models/ciudad/antigravity/personajes/clotilde_urioste/clotilde_urioste.glb",
+      "retrato": "clotilde_urioste.png",
+      "lugar": {
+        "x": -142.2,
+        "z": 238.3,
+        "mira_a": [
+          -128.0,
+          252.0
+        ]
+      },
+      "mecanica": [
+        "reposo",
+        "saludar",
+        "reposo",
+        "asentir"
+      ],
+      "movimiento": {
+        "clip": "paseo_beneficencia",
+        "sigue_a": "francisco_argandona"
+      },
+      "gesto_invita": "saludar",
+      "omitir_gestos": [
+        "sentada_carruaje"
+      ],
+      "camara": {
+        "lado": -1,
+        "distancia": 2.5
+      }
+    },
+    {
+      "id": "nino_hornacinas",
+      "nombre": "El niño del caballito",
+      "epoca": "leyenda colonial",
+      "tipo": "leyenda",
+      "modelo": "web/public/models/ciudad/claude/personajes/nino_hornacinas/nino_hornacinas.glb",
+      "lugar": {
+        "x": -93.9,
+        "z": -13.1,
+        "mira_a": [
+          -92.5,
+          -12.0
+        ]
+      },
+      "mecanica": [
+        "galopar_palo",
+        "reposo",
+        "asomarse",
+        "reir",
+        "reposo"
+      ],
+      "movimiento": {
+        "modo": "huir",
+        "clip": "galopar_palo",
+        "vel": 2.0,
+        "radio": 10,
+        "paradas": 1,
+        "clip_huir": "huir",
+        "vel_huir": 3.6,
+        "distancia": 5,
+        "huidas": 2,
+        "al_llegar": "asomarse"
+      },
+      "gesto_invita": "asomarse",
+      "camara": {
+        "lado": 1,
+        "distancia": 2.2
+      }
+    },
+    {
+      "id": "sirviente_mudo",
+      "nombre": "El sirviente mudo",
+      "epoca": "mayo de 1809",
+      "tipo": "tradicion",
+      "modelo": "web/public/models/ciudad/codex/personajes/sirviente/sirviente.glb",
+      "lugar": {
+        "x": -236.4,
+        "z": 87.1,
+        "mira_a": [
+          -232.7,
+          82.4
+        ]
+      },
+      "mecanica": [
+        "reposo",
+        "mirar_atras",
+        "reposo",
+        "mostrar_forro"
+      ],
+      "movimiento": {
+        "modo": "apartarse",
+        "clip": "sigilo",
+        "vel": 0.9,
+        "radio": 10,
+        "paradas": 1,
+        "clip_huir": "apartarse"
+      },
+      "gesto_invita": "mirar_atras",
+      "camara": {
+        "lado": 1,
+        "distancia": 2.6
+      }
+    },
+    {
+      "id": "perro_san_roque",
+      "nombre": "El perro de San Roque",
+      "epoca": "tradición",
+      "tipo": "tradicion",
+      "modelo": "web/public/models/ciudad/antigravity/personajes/perro_san_roque/perro_san_roque.glb",
+      "lugar": {
+        "x": -176.0,
+        "z": 268.0,
+        "mira_a": [
+          -160.0,
+          262.0
+        ]
+      },
+      "mecanica": [
+        "reposo",
+        "mover_cola",
+        "mirar_atento",
+        "reposo"
+      ],
+      "movimiento": {
+        "modo": "rondar",
+        "clip": "trotar",
+        "vel": 1.8,
+        "radio": 10,
+        "paradas": 2
+      },
+      "gesto_invita": "mover_cola",
+      "camara": {
+        "lado": 1,
+        "distancia": 2.2
+      }
+    }
+  ]
+}
