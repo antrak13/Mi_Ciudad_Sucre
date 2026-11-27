@@ -34,6 +34,8 @@ var _captura := ""
 var _captura_t := 0.0
 var _t_log := 0.0
 var _retorno_museo := false
+var tour: Tour
+var _tour_pendiente := false
 
 ## Cierre ordenado: las cachés estáticas de materiales se sueltan mientras el servidor de render sigue vivo.
 func _exit_tree() -> void:
@@ -100,6 +102,17 @@ func _ready() -> void:
 	encuentros.puente = puente
 	encuentros.trafico = trafico
 	add_child(encuentros)
+	tour = Tour.new()                         # tour guiado (scripts/tour/, guion en tour/guion.json)
+	tour.name = "Tour"
+	tour.principal = self
+	tour.ciudad = ciudad
+	tour.jugador = jugador
+	tour.interfaz = ui
+	tour.puente = puente
+	tour.trafico = trafico
+	tour.encuentros = encuentros
+	add_child(tour)
+	ui.iniciar_tour.connect(iniciar_tour)
 	calles.cargar(await Datos.texto("calles.json"))
 	noche.cargar(await Datos.json("faroles.json"))
 	ui.entrar_pie.connect(func():
@@ -189,6 +202,18 @@ func tomar(x: float, y: float, z: float, rumbo: float, inclinacion: float) -> vo
 	jugador.pitch = inclinacion
 	jugador.mirar(0.0, 0.0)
 
+# ------------------------------------------------------------------------------------------------- tour guiado
+## Empieza el tour guiado (scripts/tour/): desde la portada, el botón del HUD o la página web.
+func iniciar_tour() -> void:
+	if modo != Modo.PIE:
+		_tour_pendiente = true          # aún carga: empieza en cuanto se pueda estar a pie
+		return
+	tour.iniciar()
+
+## Al terminar el tour: de vuelta a pie, frente al monumento de la plaza.
+func tour_terminado() -> void:
+	_ir(MONUMENTO.x, MONUMENTO.y, 0.0)
+
 func _minimapa_ir(x: float, z: float) -> void:
 	if modo == Modo.PIE:
 		_ir(x, z, jugador.yaw)
@@ -248,6 +273,9 @@ func _intentar_aparecer() -> void:
 		ciudad.presupuesto_ms = Ciudad.PRESUPUESTO_MS     # incrustada sigue cargando rápido hasta que se entra
 	trafico.arrancar()
 	puente.avisar_lista()
+	if _tour_pendiente or (OS.get_environment("SUCRE_TOUR") != "" and not tour.activo):
+		_tour_pendiente = false
+		tour.iniciar.call_deferred()
 
 func _rumbo_mas_libre(p: Vector3, estado: PhysicsDirectSpaceState3D) -> float:
 	var mejor := -1.0
@@ -278,6 +306,11 @@ func _process(dt: float) -> void:
 				elif not embebido:
 					ui.entrar_pie.emit()
 		Modo.PIE:
+			if tour.activo:
+				ciudad.fijar_foco(tour.foco)
+				if _pendiente != null:
+					_intentar_aparecer()
+				return
 			ciudad.fijar_foco(jugador.global_position)
 			var m := ui.minimapa
 			m.centro = Vector2(jugador.global_position.x, jugador.global_position.z)
@@ -300,8 +333,44 @@ func _actualizar_calle(dt: float, p: Vector2, maximo: float) -> void:
 	_t_calle = 0.0
 	ui.poner_calle(calles.calle(p.x, p.y, maximo))
 
+## Solo pruebas: SUCRE_TOMAS=archivo.json ([{"nombre", "ojos": [x, y, z], "mira": [x, y, z], "fov"}]) fotografía cada vista
+## en SUCRE_TOMAS_DIR (una sola ejecución para muchas vistas: así se diseñan las cámaras del tour) y sale.
+var _tomas_hechas := false
+func _fotografiar_tomas() -> void:
+	_tomas_hechas = true
+	var lista = JSON.parse_string(FileAccess.get_file_as_string(OS.get_environment("SUCRE_TOMAS")))
+	var dir := OS.get_environment("SUCRE_TOMAS_DIR")
+	trafico.visible = false
+	trafico.process_mode = Node.PROCESS_MODE_DISABLED
+	jugador.activo = false
+	var cam := Camera3D.new()
+	cam.near = 0.1
+	cam.far = 6000.0
+	add_child(cam)
+	cam.make_current()
+	for t in lista:
+		var o: Array = t["ojos"]
+		var m: Array = t["mira"]
+		var ojos := Vector3(o[0], o[1], o[2])
+		cam.fov = float(t.get("fov", 60.0))
+		cam.look_at_from_position(ojos, Vector3(m[0], m[1], m[2]))
+		ciudad.fijar_foco(ojos)
+		var espera := 0.0
+		while (ciudad.progreso_alrededor(ojos, 160.0) < 0.98 and espera < 25.0) or espera < 1.5:
+			await get_tree().process_frame
+			ciudad.fijar_foco(ojos)
+			espera += get_process_delta_time()
+		for i in 8:
+			await get_tree().process_frame
+		await RenderingServer.frame_post_draw
+		get_viewport().get_texture().get_image().save_jpg(dir + "/" + str(t["nombre"]) + ".jpg", 0.85)
+		print("toma ", t["nombre"])
+	get_tree().quit()
+
 ## Banderas de prueba (solo escritorio): SUCRE_CAPTURA=ruta.png (y SUCRE_ESPERA=s), SUCRE_ANDAR=1, SUCRE_X/SUCRE_Z.
 func _pruebas(dt: float) -> void:
+	if modo == Modo.PIE and not _tomas_hechas and OS.get_environment("SUCRE_TOMAS") != "":
+		_fotografiar_tomas()
 	if modo == Modo.PIE and OS.get_environment("SUCRE_ANDAR") != "":
 		jugador.entrada = Vector2(0, 1)
 		_t_log += dt

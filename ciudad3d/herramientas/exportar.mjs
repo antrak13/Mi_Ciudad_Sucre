@@ -32,6 +32,8 @@ if (conDatos) {
 }
 // personajes y textos de sus encuentros (rápido: siempre, para que un cambio en guiones.md entre en cada exportación)
 correr("python3", ["ciudad3d/herramientas/personajes.py"]);
+// tour guiado (guion, voces cortadas, láminas y figurantes de la procesión; lo que no cambió sale de su caché)
+correr("python3", ["ciudad3d/herramientas/tour.py"]);
 // importar recursos nuevos (texturas, scripts) antes de exportar
 correr(GODOT, ["--headless", "--path", PROYECTO, "--import"]);
 

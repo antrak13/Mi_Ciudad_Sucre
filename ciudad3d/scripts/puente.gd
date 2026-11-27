@@ -2,7 +2,7 @@ class_name Puente
 extends Node
 ## Puente con la página web que contiene a la ciudad (web/src/ciudad/PaginaCiudad.tsx). Solo hace algo en la web.
 ##
-## Página → Godot: funciones en window.sucreGodot (entrar, ir, toma, capturar, marcas, origen, calidad, hora).
+## Página → Godot: funciones en window.sucreGodot (entrar, ir, toma, capturar, marcas, origen, calidad, hora, tour).
 ## Godot → página: eventos 'sucre' en window ({tipo: "lista" | "posicion" | "rendimiento" | "captura" | "elegida" …}).
 ## La página reenvía "lista"/"entrar" a la portada (/inicio) por postMessage, como hacía el visor three.js.
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 		return
 	_ventana = JavaScriptBridge.get_interface("window")
 	var obj: JavaScriptObject = JavaScriptBridge.create_object("Object")
-	for nombre in ["entrar", "ir", "toma", "capturar", "marcas", "origen", "calidad", "hora", "pausar"]:
+	for nombre in ["entrar", "ir", "toma", "capturar", "marcas", "origen", "calidad", "hora", "pausar", "tour"]:
 		var cb := JavaScriptBridge.create_callback(Callable(self, "_js_" + nombre))
 		_retener.append(cb)
 		obj[nombre] = cb
@@ -56,7 +56,7 @@ func avisar_lista() -> void:
 		get_tree().create_timer(0.5).timeout.connect(func(): RenderingServer.render_loop_enabled = false)
 
 func _process(dt: float) -> void:
-	if _ventana == null or principal.modo != principal.Modo.PIE:
+	if _ventana == null or principal.modo != principal.Modo.PIE or principal.tour.activo:
 		return
 	_t += dt
 	if _t < 0.5:
@@ -115,3 +115,10 @@ func _js_calidad(args: Array) -> void:
 
 func _js_hora(_args: Array) -> void:
 	principal.cambiar_hora()
+
+## tour(): empieza el tour guiado, o lo termina si ya está en curso.
+func _js_tour(_args: Array) -> void:
+	if principal.tour.activo:
+		principal.tour.salir()
+	else:
+		principal.iniciar_tour()

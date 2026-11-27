@@ -9,7 +9,7 @@ export default function PantallaInicio({ fraccion, detalle, lista, error, alEntr
   detalle: string;
   lista: boolean;
   error?: string;
-  alEntrar: (m: Modo) => void;
+  alEntrar: (m: Modo | "tour") => void;
 }) {
   return (
     <div className={`absolute inset-0 z-30 flex items-center justify-center p-6 transition-colors duration-700 ${lista ? "bg-sucre-cal/35" : "bg-sucre-cal"}`}>
@@ -31,8 +31,8 @@ export default function PantallaInicio({ fraccion, detalle, lista, error, alEntr
           </div>
         ) : (
           <div className="relative mt-7 grid gap-2.5 whitespace-nowrap sm:grid-cols-2">
-            <button autoFocus onClick={() => alEntrar("mapa")} className="boton boton-rojo py-3">
-              <IconoMapa /> Ver desde el aire
+            <button autoFocus onClick={() => alEntrar("tour")} className="boton boton-rojo py-3">
+              <IconoTourInicio /> Hacer el tour guiado
             </button>
             <button onClick={() => alEntrar("peaton")} className="boton boton-cal py-3">
               <IconoPie /> Caminar sus calles
@@ -57,6 +57,14 @@ export function IconoMapa() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden>
       <path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z" /><path d="M9 4v14M15 6v14" />
+    </svg>
+  );
+}
+
+export function IconoTourInicio() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <polygon points="3 11 22 2 13 21 11 13 3 11" />
     </svg>
   );
 }

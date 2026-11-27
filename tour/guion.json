@@ -1,0 +1,1486 @@
+{
+ "_comentario": "Guion del tour guiado (lo empaqueta ciudad3d/herramientas/tour.py → ciudad3d/datos/tour.json). Coordenadas del mundo de Godot: x al este, z al sur, y la altura (suelo de la plaza ≈ 63 m). Cada toma: 'camara' = claves {ojos, mira, fov} que la cámara recorre (curva suave) durante sus frases; 'transicion': vuelo (entre paradas), deslizar (desde la toma anterior) o corte (fundido a negro). Frases: {locucion, frases: [índices]} = frases de tour/audio/<locucion>.mp3 (texto en tour/audio/textos.json); {personaje, frase} = una frase ya grabada de los encuentros; {texto} = sin voz (la carta va por tiempo de lectura). En cada frase: 'lamina' (lámina de archivo al costado), 'fundido' (foto de archivo a pantalla completa que se disuelve en la vista 3D), 'sonido', 'escena'.",
+ "paradas": [
+  {
+   "id": "catedral",
+   "titulo": "La Catedral Metropolitana",
+   "lema": "Nuestra Señora de Guadalupe · 1559–1712",
+   "tomas": [
+    {
+     "transicion": "vuelo",
+     "camara": [
+      {
+       "ojos": [
+        -110,
+        150,
+        185
+       ],
+       "mira": [
+        -205,
+        75,
+        300
+       ],
+       "fov": 56
+      },
+      {
+       "ojos": [
+        -150,
+        104,
+        228
+       ],
+       "mira": [
+        -210,
+        78,
+        302
+       ],
+       "fov": 54
+      },
+      {
+       "ojos": [
+        -176,
+        74,
+        258
+       ],
+       "mira": [
+        -212,
+        80,
+        305
+       ],
+       "fov": 50
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p1_1_atrio_rumi_cruz",
+       "frases": [
+        0
+       ],
+       "lamina": "sucre_1915_a"
+      },
+      {
+       "locucion": "p1_1_atrio_rumi_cruz",
+       "frases": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "transicion": "deslizar",
+     "camara": [
+      {
+       "ojos": [
+        -166,
+        66,
+        280
+       ],
+       "mira": [
+        -192,
+        65.5,
+        304
+       ],
+       "fov": 52
+      },
+      {
+       "ojos": [
+        -163,
+        67.5,
+        283
+       ],
+       "mira": [
+        -194,
+        66,
+        301
+       ],
+       "fov": 48
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p1_1_atrio_rumi_cruz",
+       "frases": [
+        3
+       ]
+      },
+      {
+       "personaje": "quitacapas",
+       "frase": 4
+      }
+     ]
+    },
+    {
+     "transicion": "deslizar",
+     "camara": [
+      {
+       "ojos": [
+        -190,
+        70,
+        287
+       ],
+       "mira": [
+        -206,
+        66,
+        302
+       ],
+       "fov": 54
+      },
+      {
+       "ojos": [
+        -205,
+        70,
+        274
+       ],
+       "mira": [
+        -221,
+        66,
+        289
+       ],
+       "fov": 54
+      },
+      {
+       "ojos": [
+        -220,
+        70,
+        260
+       ],
+       "mira": [
+        -236,
+        66,
+        276
+       ],
+       "fov": 52
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p1_2_portadas_barrocas",
+       "frases": [
+        0
+       ],
+       "lamina": "catedral_1842_orbigny"
+      },
+      {
+       "locucion": "p1_2_portadas_barrocas",
+       "frases": [
+        1
+       ]
+      },
+      {
+       "personaje": "diego_de_ocana",
+       "frase": 14
+      },
+      {
+       "personaje": "diego_de_ocana",
+       "frase": 15
+      }
+     ]
+    },
+    {
+     "transicion": "corte",
+     "camara": [
+      {
+       "ojos": [
+        -188,
+        64.4,
+        254
+       ],
+       "mira": [
+        -208,
+        85,
+        306
+       ],
+       "fov": 40
+      },
+      {
+       "ojos": [
+        -170,
+        64.5,
+        272
+       ],
+       "mira": [
+        -207,
+        92,
+        306
+       ],
+       "fov": 48
+      },
+      {
+       "ojos": [
+        -168,
+        64.6,
+        284
+       ],
+       "mira": [
+        -207,
+        97,
+        306
+       ],
+       "fov": 42
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p1_3_torre_reloj",
+       "frases": [
+        0
+       ],
+       "fundido": "catedral_1925_torre_calle"
+      },
+      {
+       "locucion": "p1_3_torre_reloj",
+       "frases": [
+        1
+       ]
+      },
+      {
+       "locucion": "p1_3_torre_reloj",
+       "frases": [
+        2
+       ],
+       "sonido": "campanas_repique"
+      },
+      {
+       "personaje": "diego_de_ocana",
+       "frase": 16
+      },
+      {
+       "personaje": "diego_de_ocana",
+       "frase": 17
+      },
+      {
+       "personaje": "diego_de_ocana",
+       "frase": 18
+      }
+     ]
+    },
+    {
+     "transicion": "corte",
+     "escena": "procesion",
+     "camara": [
+      {
+       "ojos": [
+        -214,
+        63.6,
+        246
+       ],
+       "mira": [
+        -228,
+        63.6,
+        252
+       ],
+       "fov": 44
+      },
+      {
+       "ojos": [
+        -208,
+        63.8,
+        252
+       ],
+       "mira": [
+        -222,
+        64.2,
+        259
+       ],
+       "fov": 44
+      },
+      {
+       "ojos": [
+        -200,
+        64.6,
+        262
+       ],
+       "mira": [
+        -217,
+        64.0,
+        263
+       ],
+       "fov": 46
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p1_4_interior_museo",
+       "frases": [
+        2
+       ],
+       "sonido": "campanas_volteo"
+      },
+      {
+       "personaje": "diego_de_ocana",
+       "frase": 8
+      },
+      {
+       "personaje": "diego_de_ocana",
+       "frase": 9
+      },
+      {
+       "personaje": "diego_de_ocana",
+       "frase": 10
+      }
+     ],
+     "camara_seguir": [
+      {
+       "ojos": [
+        -2.6,
+        1.35,
+        8.5
+       ],
+       "mira": [
+        0,
+        2.3,
+        0
+       ],
+       "fov": 40
+      },
+      {
+       "ojos": [
+        -4.6,
+        1.6,
+        3.0
+       ],
+       "mira": [
+        0,
+        2.1,
+        0.4
+       ],
+       "fov": 42
+      },
+      {
+       "ojos": [
+        -4.2,
+        1.9,
+        -3.5
+       ],
+       "mira": [
+        0,
+        2.2,
+        0.6
+       ],
+       "fov": 44
+      },
+      {
+       "ojos": [
+        2.5,
+        3.2,
+        -8.5
+       ],
+       "mira": [
+        0,
+        2.0,
+        4.0
+       ],
+       "fov": 46
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "plaza",
+   "titulo": "Plaza 25 de Mayo",
+   "lema": "La plaza mayor de La Plata",
+   "tomas": [
+    {
+     "transicion": "vuelo",
+     "camara": [
+      {
+       "ojos": [
+        -205,
+        120,
+        258
+       ],
+       "mira": [
+        -182,
+        63,
+        209
+       ],
+       "fov": 55
+      },
+      {
+       "ojos": [
+        -135,
+        128,
+        232
+       ],
+       "mira": [
+        -182,
+        63,
+        209
+       ],
+       "fov": 55
+      },
+      {
+       "ojos": [
+        -140,
+        132,
+        165
+       ],
+       "mira": [
+        -182,
+        63,
+        209
+       ],
+       "fov": 55
+      },
+      {
+       "ojos": [
+        -210,
+        128,
+        160
+       ],
+       "mira": [
+        -182,
+        63,
+        209
+       ],
+       "fov": 55
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p2_1_trazado_plaza",
+       "frases": [
+        0
+       ]
+      },
+      {
+       "locucion": "p2_1_trazado_plaza",
+       "frases": [
+        1
+       ],
+       "lamina": "chuquisaca_1615_guaman_poma"
+      },
+      {
+       "locucion": "p2_1_trazado_plaza",
+       "frases": [
+        2
+       ],
+       "lamina": "plaza_1925_paseo"
+      },
+      {
+       "personaje": "aguatero",
+       "frase": 6
+      }
+     ]
+    },
+    {
+     "transicion": "deslizar",
+     "camara": [
+      {
+       "ojos": [
+        -176,
+        82,
+        186
+       ],
+       "mira": [
+        -176.7,
+        67,
+        208.9
+       ],
+       "fov": 50
+      },
+      {
+       "ojos": [
+        -160,
+        64.2,
+        214
+       ],
+       "mira": [
+        -177,
+        68,
+        209
+       ],
+       "fov": 48
+      },
+      {
+       "ojos": [
+        -165,
+        64.2,
+        215
+       ],
+       "mira": [
+        -176.7,
+        69,
+        208.9
+       ],
+       "fov": 50
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p2_2_monumento_leones",
+       "frases": [
+        0
+       ],
+       "fundido": "plaza_1925_estatua_sucre"
+      },
+      {
+       "locucion": "p2_2_monumento_leones",
+       "frases": [
+        1
+       ],
+       "lamina": "plaza_1925_leyenda_sucre"
+      },
+      {
+       "locucion": "p2_2_monumento_leones",
+       "frases": [
+        2
+       ]
+      },
+      {
+       "locucion": "p2_2_monumento_leones",
+       "frases": [
+        3
+       ]
+      }
+     ]
+    },
+    {
+     "transicion": "deslizar",
+     "camara": [
+      {
+       "ojos": [
+        -218,
+        64.6,
+        250
+       ],
+       "mira": [
+        -205.6,
+        66.5,
+        234.7
+       ],
+       "fov": 48
+      },
+      {
+       "ojos": [
+        -214,
+        64.4,
+        245
+       ],
+       "mira": [
+        -205.6,
+        67,
+        234.7
+       ],
+       "fov": 42
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p2_3_piletas_proceres",
+       "frases": [
+        0
+       ],
+       "lamina": "plaza_1925_fuente"
+      },
+      {
+       "texto": "En las esquinas de la plaza la ciudad recuerda a sus próceres: Bernardo de Monteagudo, uno de los protagonistas del 25 de mayo de 1809, Jaime de Zudáñez y Juana Azurduy de Padilla.",
+       "lamina": "plaza_1925_monteagudo"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "palacio",
+   "titulo": "Palacio de Gobierno",
+   "lema": "Hoy Gobernación de Chuquisaca",
+   "tomas": [
+    {
+     "transicion": "deslizar",
+     "camara": [
+      {
+       "ojos": [
+        -228,
+        64.2,
+        208
+       ],
+       "mira": [
+        -260,
+        70,
+        240
+       ],
+       "fov": 52
+      },
+      {
+       "ojos": [
+        -236,
+        64.2,
+        214
+       ],
+       "mira": [
+        -264,
+        73,
+        244
+       ],
+       "fov": 50
+      },
+      {
+       "ojos": [
+        -240,
+        64.2,
+        219
+       ],
+       "mira": [
+        -265,
+        78,
+        246
+       ],
+       "fov": 50
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p3_1_fachada_mansarda",
+       "frases": [
+        0
+       ]
+      },
+      {
+       "locucion": "p3_1_fachada_mansarda",
+       "frases": [
+        2
+       ],
+       "fundido": "palacio_1925_fachada"
+      },
+      {
+       "personaje": "jaime_zudanez",
+       "frase": 7
+      },
+      {
+       "personaje": "jaime_zudanez",
+       "frase": 8,
+       "lamina": "sucre_presidente"
+      },
+      {
+       "personaje": "jaime_zudanez",
+       "frase": 9,
+       "lamina": "palacio_1918"
+      }
+     ]
+    },
+    {
+     "transicion": "deslizar",
+     "camara": [
+      {
+       "ojos": [
+        -262,
+        66,
+        212
+       ],
+       "mira": [
+        -286,
+        66,
+        236
+       ],
+       "fov": 54
+      },
+      {
+       "ojos": [
+        -266,
+        66.5,
+        207
+       ],
+       "mira": [
+        -292,
+        65,
+        236
+       ],
+       "fov": 56
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p3_2_bustillos_secciones",
+       "frases": [
+        0
+       ],
+       "lamina": "palacio_1925_patio"
+      },
+      {
+       "locucion": "p3_2_bustillos_secciones",
+       "frases": [
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "libertad",
+   "titulo": "Casa de la Libertad",
+   "lema": "6 de agosto de 1825",
+   "tomas": [
+    {
+     "transicion": "vuelo",
+     "camara": [
+      {
+       "ojos": [
+        -214,
+        64.3,
+        186
+       ],
+       "mira": [
+        -240,
+        67,
+        164
+       ],
+       "fov": 52
+      },
+      {
+       "ojos": [
+        -219,
+        64.3,
+        178
+       ],
+       "mira": [
+        -238,
+        67.5,
+        161
+       ],
+       "fov": 48
+      }
+     ],
+     "frases": [
+      {
+       "texto": "Frente a la plaza está la Casa de la Libertad. Fue parte del conjunto de los jesuitas y de la Universidad de San Francisco Xavier, que el papa Gregorio XV autorizó en 1621."
+      },
+      {
+       "texto": "Aquí, el 6 de agosto de 1825, los diputados del Alto Perú firmaron el Acta de la Independencia de Bolivia.",
+       "lamina": "acta_1825"
+      },
+      {
+       "texto": "La redactó José Mariano Serrano. En su biblioteca tenía las leyes de los Estados Unidos, con su Declaración de Independencia de 1776."
+      },
+      {
+       "texto": "En su Salón de la Independencia se reunió el Congreso de la república hasta 1898. Allí cuelgan los retratos de Bolívar, de Sucre y de Ballivián.",
+       "lamina": "bolivar_1825"
+      },
+      {
+       "texto": "La casa guarda también los restos de Juana Azurduy de Padilla, que murió en esta ciudad, pobre, el 25 de mayo de 1862.",
+       "lamina": "juana_azurduy"
+      },
+      {
+       "texto": "Su interior se puede recorrer: al terminar el tour, basta caminar hasta su puerta."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cabildo",
+   "titulo": "Palacio Municipal",
+   "lema": "Cabildo, cárcel y teatro",
+   "tomas": [
+    {
+     "transicion": "vuelo",
+     "camara": [
+      {
+       "ojos": [
+        -176,
+        96,
+        142
+       ],
+       "mira": [
+        -222,
+        64,
+        104
+       ],
+       "fov": 52
+      },
+      {
+       "ojos": [
+        -190,
+        88,
+        150
+       ],
+       "mira": [
+        -228,
+        64,
+        100
+       ],
+       "fov": 52
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p4_1_alcaldia_municipal",
+       "frases": [
+        0
+       ],
+       "fundido": "municipal_1925_fachada"
+      },
+      {
+       "locucion": "p4_1_alcaldia_municipal",
+       "frases": [
+        1
+       ]
+      },
+      {
+       "personaje": "quitacapas",
+       "frase": 5
+      },
+      {
+       "personaje": "quitacapas",
+       "frase": 9
+      },
+      {
+       "locucion": "p4_2_teatro_3_febrero",
+       "frases": [
+        0
+       ]
+      },
+      {
+       "locucion": "p4_2_teatro_3_febrero",
+       "frases": [
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "san_francisco",
+   "titulo": "Templo de San Francisco",
+   "lema": "La campana del 25 de mayo de 1809",
+   "tomas": [
+    {
+     "transicion": "vuelo",
+     "camara": [
+      {
+       "ojos": [
+        -86,
+        61.8,
+        14
+       ],
+       "mira": [
+        -110,
+        66,
+        -8
+       ],
+       "fov": 54
+      },
+      {
+       "ojos": [
+        -92,
+        61.6,
+        9
+       ],
+       "mira": [
+        -108,
+        74,
+        -13
+       ],
+       "fov": 50
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p5_1_san_francisco",
+       "frases": [
+        0
+       ]
+      },
+      {
+       "locucion": "p5_1_san_francisco",
+       "frases": [
+        1
+       ],
+       "sonido": "campanas_volteo"
+      }
+     ]
+    },
+    {
+     "transicion": "deslizar",
+     "escena": "eco_campana",
+     "camara": [
+      {
+       "ojos": [
+        -100,
+        82,
+        0
+       ],
+       "mira": [
+        -150,
+        70,
+        110
+       ],
+       "fov": 56
+      },
+      {
+       "ojos": [
+        -130,
+        108,
+        80
+       ],
+       "mira": [
+        -183,
+        64,
+        205
+       ],
+       "fov": 56
+      },
+      {
+       "ojos": [
+        -160,
+        96,
+        160
+       ],
+       "mira": [
+        -205,
+        64,
+        230
+       ],
+       "fov": 54
+      }
+     ],
+     "frases": [
+      {
+       "personaje": "mariana_zudanez",
+       "frase": 4
+      },
+      {
+       "personaje": "mariana_zudanez",
+       "frase": 6
+      },
+      {
+       "locucion": "p5_1_san_francisco",
+       "frases": [
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "san_felipe",
+   "titulo": "San Felipe Neri",
+   "lema": "Epílogo: la Ciudad Blanca desde lo alto",
+   "hora": "atardecer",
+   "tomas": [
+    {
+     "transicion": "vuelo",
+     "camara": [
+      {
+       "ojos": [
+        -310,
+        82,
+        430
+       ],
+       "mira": [
+        -358,
+        64,
+        462
+       ],
+       "fov": 54
+      },
+      {
+       "ojos": [
+        -322,
+        76,
+        482
+       ],
+       "mira": [
+        -360,
+        66,
+        462
+       ],
+       "fov": 52
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p6_1_san_felipe_neri",
+       "frases": [
+        0
+       ]
+      },
+      {
+       "locucion": "p6_1_san_felipe_neri",
+       "frases": [
+        1
+       ]
+      },
+      {
+       "locucion": "p6_1_san_felipe_neri",
+       "frases": [
+        2
+       ],
+       "lamina": "sucre_1915_b"
+      }
+     ]
+    },
+    {
+     "transicion": "deslizar",
+     "camara": [
+      {
+       "ojos": [
+        -330,
+        100,
+        470
+       ],
+       "mira": [
+        380,
+        140,
+        923
+       ],
+       "fov": 55
+      },
+      {
+       "ojos": [
+        -250,
+        190,
+        360
+       ],
+       "mira": [
+        380,
+        130,
+        923
+       ],
+       "fov": 55
+      },
+      {
+       "ojos": [
+        -150,
+        260,
+        260
+       ],
+       "mira": [
+        200,
+        80,
+        600
+       ],
+       "fov": 58
+      }
+     ],
+     "frases": [
+      {
+       "locucion": "p6_1_san_felipe_neri",
+       "frases": [
+        3
+       ]
+      },
+      {
+       "texto": "Aquí termina el recorrido. La ciudad queda abierta: camine sus calles y busque a quienes la vivieron."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "laminas": {
+  "sucre_1915_a": {
+   "archivo": "recursos/originales/tour/sucre_1915_a.jpg",
+   "pie": "Sucre, la Ciudad Blanca, hacia 1915",
+   "fuente": "Panorama fotográfico, Library of Congress (dominio público)"
+  },
+  "sucre_1915_b": {
+   "archivo": "recursos/originales/tour/sucre_1915_b.jpg",
+   "pie": "Tejados de Sucre, hacia 1915",
+   "fuente": "Panorama fotográfico, Library of Congress (dominio público)"
+  },
+  "catedral_1842_orbigny": {
+   "archivo": "recursos/originales/tour/catedral_1842_orbigny.jpg",
+   "recorte": [
+    0.04,
+    0.04,
+    0.96,
+    0.5
+   ],
+   "pie": "La Catedral de Chuquisaca, 1842",
+   "fuente": "Alcide d'Orbigny, Voyage pittoresque (dominio público)"
+  },
+  "catedral_1925_torre_calle": {
+   "archivo": "recursos/originales/tour/centenario_1925/catedral_1925_torre_calle.jpg",
+   "pie": "La torre de la Catedral, 1925",
+   "fuente": "Bolivia en el primer centenario de su independencia (1925)"
+  },
+  "chuquisaca_1615_guaman_poma": {
+   "archivo": "recursos/originales/tour/chuquisaca_1615_guaman_poma.jpg",
+   "pie": "La ciudad de Chuquisaca, hacia 1615",
+   "fuente": "Felipe Guaman Poma de Ayala, Nueva corónica y buen gobierno"
+  },
+  "plaza_1925_paseo": {
+   "archivo": "recursos/originales/tour/centenario_1925/plaza_1925_paseo.jpg",
+   "pie": "El paseo en la plaza, 1925",
+   "fuente": "Bolivia en el primer centenario de su independencia (1925)"
+  },
+  "plaza_1925_estatua_sucre": {
+   "archivo": "recursos/originales/tour/centenario_1925/plaza_1925_estatua_sucre.jpg",
+   "pie": "El monumento a Sucre, 1925",
+   "fuente": "Bolivia en el primer centenario de su independencia (1925)"
+  },
+  "plaza_1925_leyenda_sucre": {
+   "archivo": "recursos/originales/tour/centenario_1925/plaza_1925_leyenda_sucre.jpg",
+   "pie": "La leyenda del monumento, 1925",
+   "fuente": "Bolivia en el primer centenario de su independencia (1925)"
+  },
+  "plaza_1925_fuente": {
+   "archivo": "recursos/originales/tour/centenario_1925/plaza_1925_fuente.jpg",
+   "pie": "Vista de la plaza, 1925",
+   "fuente": "Bolivia en el primer centenario de su independencia (1925)"
+  },
+  "plaza_1925_monteagudo": {
+   "archivo": "recursos/originales/tour/centenario_1925/plaza_1925_monteagudo.jpg",
+   "pie": "Estatua de Bernardo de Monteagudo, 1925",
+   "fuente": "Bolivia en el primer centenario de su independencia (1925)"
+  },
+  "palacio_1925_fachada": {
+   "archivo": "recursos/originales/tour/centenario_1925/palacio_1925_fachada.jpg",
+   "pie": "El Palacio de Gobierno, 1925",
+   "fuente": "Bolivia en el primer centenario de su independencia (1925)"
+  },
+  "palacio_1925_patio": {
+   "archivo": "recursos/originales/tour/centenario_1925/palacio_1925_patio.jpg",
+   "pie": "Un patio con galerías, 1925",
+   "fuente": "Bolivia en el primer centenario de su independencia (1925)"
+  },
+  "palacio_1918": {
+   "archivo": "recursos/originales/tour/palacio_1918_a.jpg",
+   "recorte": [
+    0.16,
+    0.08,
+    0.84,
+    0.86
+   ],
+   "pie": "El Palacio de Gobierno, hacia 1918",
+   "fuente": "National Photo Company, Library of Congress (dominio público)"
+  },
+  "sucre_presidente": {
+   "archivo": "recursos/originales/tour/sucre_presidente.png",
+   "pie": "Antonio José de Sucre",
+   "fuente": "Retrato al óleo, siglo XIX (dominio público)"
+  },
+  "acta_1825": {
+   "archivo": "recursos/originales/tour/acta_1825.png",
+   "pie": "Acta de la Independencia, 6 de agosto de 1825",
+   "fuente": "Archivo y Biblioteca Nacionales de Bolivia (dominio público)"
+  },
+  "bolivar_1825": {
+   "archivo": "recursos/originales/tour/bolivar_1825_gil_de_castro.jpg",
+   "pie": "Simón Bolívar, 1825",
+   "fuente": "José Gil de Castro (dominio público)"
+  },
+  "juana_azurduy": {
+   "archivo": "recursos/originales/tour/juana_azurduy_agn.jpg",
+   "pie": "Juana Azurduy de Padilla",
+   "fuente": "Archivo General de la Nación Argentina (dominio público)"
+  },
+  "municipal_1925_fachada": {
+   "archivo": "recursos/originales/tour/centenario_1925/municipal_1925_fachada.jpg",
+   "pie": "El Palacio Municipal, 1925",
+   "fuente": "Bolivia en el primer centenario de su independencia (1925)"
+  }
+ },
+ "figurantes": {
+  "virgen": {
+   "modelo": "web/public/models/ciudad/codex/personajes/guadalupe/virgen_guadalupe.glb",
+   "triangulos": 1,
+   "lado": 2048,
+   "clips": []
+  },
+  "vergara": {
+   "modelo": "web/public/models/ciudad/codex/personajes/alonso_ramirez_de_vergara/alonso_ramirez_de_vergara.glb",
+   "triangulos": 0.6,
+   "lado": 1024,
+   "clips": [
+    "incensar",
+    "caminar",
+    "reposo"
+   ]
+  },
+  "ocana": {
+   "modelo": "web/public/models/ciudad/antigravity/personajes/diego_de_ocana/diego_de_ocana.glb",
+   "triangulos": 0.6,
+   "lado": 1024,
+   "clips": [
+    "caminar",
+    "reposo"
+   ]
+  },
+  "vecino_ande": {
+   "modelo": "web/public/models/ciudad/antigravity/personajes/vecino_ande/vecino_ande.glb",
+   "triangulos": 0.55,
+   "lado": 1024,
+   "clips": [
+    "cargar_andas",
+    "cargar_andas_izq",
+    "llevar_vela",
+    "rezar_acompanar",
+    "reposo",
+    "caminar"
+   ]
+  },
+  "vecino_urbano": {
+   "modelo": "web/public/models/ciudad/antigravity/personajes/vecino_urbano/vecino_urbano.glb",
+   "triangulos": 0.55,
+   "lado": 1024,
+   "clips": [
+    "cargar_andas",
+    "cargar_andas_izq",
+    "llevar_vela",
+    "rezar_acompanar",
+    "reposo",
+    "caminar"
+   ]
+  },
+  "vecino_mayor": {
+   "modelo": "web/public/models/ciudad/antigravity/personajes/vecino_mayor/vecino_mayor.glb",
+   "triangulos": 0.55,
+   "lado": 1024,
+   "clips": [
+    "cargar_andas",
+    "cargar_andas_izq",
+    "llevar_vela",
+    "rezar_acompanar",
+    "reposo",
+    "caminar"
+   ]
+  },
+  "joven_procesion": {
+   "modelo": "web/public/models/ciudad/antigravity/personajes/joven_procesion/joven_procesion.glb",
+   "triangulos": 0.55,
+   "lado": 1024,
+   "clips": [
+    "cargar_andas",
+    "cargar_andas_izq",
+    "llevar_vela",
+    "rezar_acompanar",
+    "reposo",
+    "caminar"
+   ]
+  },
+  "vecina_ande": {
+   "modelo": "web/public/models/ciudad/antigravity/personajes/vecina_ande/vecina_ande.glb",
+   "triangulos": 0.55,
+   "lado": 1024,
+   "clips": [
+    "cargar_andas",
+    "cargar_andas_izq",
+    "llevar_vela",
+    "rezar_acompanar",
+    "reposo",
+    "caminar"
+   ]
+  },
+  "vecina_urbana": {
+   "modelo": "web/public/models/ciudad/antigravity/personajes/vecina_urbana/vecina_urbana.glb",
+   "triangulos": 0.55,
+   "lado": 1024,
+   "clips": [
+    "cargar_andas",
+    "cargar_andas_izq",
+    "llevar_vela",
+    "rezar_acompanar",
+    "reposo",
+    "caminar"
+   ]
+  }
+ },
+ "procesion": {
+  "_comentario": "Cortejo de enero de 1602 (Ocaña, fols. 232v–234v; formación de blender/zonas/antigravity/personajes/visor_personaje/visor_procesion.js). Posiciones en metros respecto al centro de las andas, frente en +z. 'desde' y 'hasta': recorrido (x, z del mundo) a 0,56 m/s.",
+  "desde": [
+   -238,
+   246
+  ],
+  "hasta": [
+   -205,
+   274
+  ],
+  "velocidad": 0.56,
+  "altura_andas": 1.345,
+  "integrantes": [
+   {
+    "f": "ocana",
+    "pos": [
+     0.0,
+     3.5
+    ],
+    "clip": "caminar"
+   },
+   {
+    "f": "vergara",
+    "pos": [
+     0.0,
+     2.38
+    ],
+    "clip": "caminar"
+   },
+   {
+    "f": "vecino_ande",
+    "pos": [
+     0.702,
+     1.133
+    ],
+    "clip": "cargar_andas"
+   },
+   {
+    "f": "vecino_urbano",
+    "pos": [
+     -0.702,
+     1.133
+    ],
+    "clip": "cargar_andas_izq"
+   },
+   {
+    "f": "vecino_mayor",
+    "pos": [
+     0.702,
+     -1.133
+    ],
+    "clip": "cargar_andas",
+    "desfase": 0.5
+   },
+   {
+    "f": "vecino_ande",
+    "pos": [
+     -0.702,
+     -1.133
+    ],
+    "clip": "cargar_andas_izq",
+    "desfase": 0.5
+   },
+   {
+    "f": "joven_procesion",
+    "pos": [
+     -0.72,
+     2.15
+    ],
+    "clip": "llevar_vela",
+    "cirio": [
+     -0.068,
+     0.97,
+     0.22
+    ],
+    "desfase": 0.22
+   },
+   {
+    "f": "vecina_ande",
+    "pos": [
+     -1.42,
+     0.2
+    ],
+    "clip": "llevar_vela",
+    "cirio": [
+     -0.071,
+     1.02,
+     0.23
+    ],
+    "desfase": 0.35
+   },
+   {
+    "f": "vecina_urbana",
+    "pos": [
+     1.45,
+     -0.1
+    ],
+    "clip": "caminar",
+    "desfase": 0.65
+   },
+   {
+    "f": "vecina_ande",
+    "pos": [
+     -1.1,
+     -2.6
+    ],
+    "clip": "llevar_vela",
+    "desfase": 0.1,
+    "cirio": [
+     -0.071,
+     1.02,
+     0.23
+    ]
+   },
+   {
+    "f": "vecino_urbano",
+    "pos": [
+     1.2,
+     -2.8
+    ],
+    "clip": "llevar_vela",
+    "cirio": [
+     -0.07,
+     1.0,
+     0.22
+    ],
+    "desfase": 0.8
+   },
+   {
+    "f": "vecina_urbana",
+    "pos": [
+     0.0,
+     -3.6
+    ],
+    "clip": "llevar_vela",
+    "cirio": [
+     -0.07,
+     1.0,
+     0.22
+    ],
+    "desfase": 0.45
+   }
+  ],
+  "fieles": [
+   {
+    "f": "vecina_ande",
+    "en": [
+     -221,
+     249.5
+    ],
+    "mira": [
+     -222,
+     262
+    ],
+    "clip": "rezar_acompanar"
+   },
+   {
+    "f": "vecino_mayor",
+    "en": [
+     -219.5,
+     249
+    ],
+    "mira": [
+     -222,
+     262
+    ],
+    "clip": "reposo"
+   },
+   {
+    "f": "vecina_urbana",
+    "en": [
+     -209,
+     258
+    ],
+    "mira": [
+     -215,
+     266
+    ],
+    "clip": "rezar_acompanar"
+   },
+   {
+    "f": "joven_procesion",
+    "en": [
+     -207.5,
+     257
+    ],
+    "mira": [
+     -215,
+     266
+    ],
+    "clip": "llevar_vela",
+    "cirio": [
+     -0.068,
+     0.97,
+     0.22
+    ]
+   }
+  ]
+ },
+ "sonidos": {
+  "campanas_volteo": "tour/sonidos/campanas_volteo.wav",
+  "campanas_repique": "tour/sonidos/campanas_repique.wav"
+ }
+}
