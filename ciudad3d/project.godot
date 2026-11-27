@@ -9,6 +9,12 @@ run/main_scene="res://escenas/principal.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icono.png"
 
+[audio]
+
+; la web se sirve por http (sin contexto seguro): AudioWorklet no existe ahí y el motor se caía al iniciar
+; ("Cannot read properties of undefined (reading 'addModule')"). ScriptProcessor funciona con y sin https.
+driver/driver.web="ScriptProcessor"
+
 [autoload]
 
 Datos="*res://scripts/datos.gd"
