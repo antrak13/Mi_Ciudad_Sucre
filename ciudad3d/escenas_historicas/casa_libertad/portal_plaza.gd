@@ -10,6 +10,9 @@ var principal: Node
 var _area: Area3D
 var _capa: CanvasLayer
 var _aviso: PanelContainer
+var _texto: Label
+var _paquete: PaqueteHistorico
+var _esperando := false
 
 func _ready() -> void:
 	# Posición exacta en la vereda frente a la portada de Casa de la Libertad (Plaza 25 de Mayo)
@@ -29,6 +32,12 @@ func _ready() -> void:
 	add_child(_area)
 
 	_crear_banner()
+	# recursos del museo: en la web se descargan aparte, en segundo plano, con la plaza ya a la vista
+	_paquete = PaqueteHistorico.new()
+	_paquete.name = "PaqueteHistorico"
+	add_child(_paquete)
+	_paquete.avance.connect(_al_avanzar)
+	_paquete.listo.connect(_al_listo)
 	Interaccion.registrar(ID_PORTAL, _area)
 	Interaccion.entro.connect(_on_entro)
 	Interaccion.salio.connect(_on_salio)
@@ -58,6 +67,7 @@ func _crear_banner() -> void:
 	var hb := HBoxContainer.new()
 	hb.add_theme_constant_override("separation", 12)
 	var lbl := Label.new()
+	_texto = lbl
 	lbl.text = "Casa de la Libertad · Presiona [E] para entrar al museo"
 	lbl.add_theme_font_size_override("font_size", 18)
 	lbl.add_theme_color_override("font_color", Color("#2b1d16"))
@@ -73,6 +83,8 @@ func _crear_banner() -> void:
 func _on_entro(id: String) -> void:
 	if id != ID_PORTAL:
 		return
+	if not _esperando:
+		_texto.text = "Casa de la Libertad · Presiona [E] para entrar al museo"
 	_aviso.visible = true
 	_aviso.reset_size()
 	var vp := get_viewport().get_visible_rect().size
@@ -85,6 +97,25 @@ func _on_salio(id: String) -> void:
 func _on_accion(id: String) -> void:
 	if id != ID_PORTAL:
 		return
+	if not PaqueteHistorico.disponible():
+		# llegó antes que la descarga: se entra apenas termine
+		_esperando = true
+		_texto.text = "Casa de la Libertad · Preparando el museo…"
+		_aviso.visible = true
+		_paquete.descargar()
+		return
+	_entrar()
+
+func _al_avanzar(f: float) -> void:
+	if _esperando:
+		_texto.text = "Casa de la Libertad · Preparando el museo… %d %%" % int(f * 100.0)
+
+func _al_listo() -> void:
+	if _esperando:
+		_esperando = false
+		_entrar()
+
+func _entrar() -> void:
 	_aviso.visible = false
 	get_tree().set_meta("desde_plaza_casa_libertad", true)
 	var entrar := func(): get_tree().change_scene_to_file(ESCENA_RECORRIDO)

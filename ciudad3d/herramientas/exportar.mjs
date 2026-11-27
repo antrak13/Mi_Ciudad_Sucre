@@ -39,6 +39,9 @@ if (destino === "web") {
   const salida = join(RAIZ, "web/public/ciudad3d");
   mkdirSync(salida, { recursive: true });
   correr(GODOT, ["--headless", "--path", PROYECTO, "--export-release", "Web", join(salida, "sucre.html")]);
+  // escenas históricas (modelo y texturas de la Casa de la Libertad): paquete aparte que la ciudad descarga en segundo
+  // plano cuando la plaza ya está a la vista (escenas_historicas/paquete_historico.gd); así no retrasan la entrada
+  correr(GODOT, ["--headless", "--path", PROYECTO, "--export-pack", "WebHistorica", join(salida, "historica.pck")]);
   // los datos van aparte (no dentro del .pck): se descargan a demanda alrededor del caminante
   rmSync(join(salida, "datos"), { recursive: true, force: true });
   cpSync(join(PROYECTO, "datos"), join(salida, "datos"), { recursive: true });
@@ -58,7 +61,7 @@ if (destino === "web") {
   const previa = existsSync(join(salida, "shaders.json")) ? JSON.parse(readFileSync(join(salida, "shaders.json"), "utf8")).huella : null;
   if (previa !== h && !process.argv.includes("--sin-shaders")) correr("node", ["ciudad3d/herramientas/capturar_shaders.mjs", "--huella", h]);
   const mb = (f) => (statSync(join(salida, f)).size / 1e6).toFixed(1);
-  console.log(`listo: web/public/ciudad3d (wasm ${mb("sucre.wasm")} MB, pck ${mb("sucre.pck")} MB)`);
+  console.log(`listo: web/public/ciudad3d (wasm ${mb("sucre.wasm")} MB, pck ${mb("sucre.pck")} MB, historica.pck ${mb("historica.pck")} MB)`);
 } else if (destino === "apk") {
   mkdirSync(join(RAIZ, "movil/build"), { recursive: true });
   correr(GODOT, ["--headless", "--path", PROYECTO, "--export-release", "Android", join(RAIZ, "movil/build/MiCiudad-Sucre.apk")]);

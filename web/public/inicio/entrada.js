@@ -19,18 +19,27 @@
 
   // --- precarga de la ciudad, a escondidas
   let lista = false, marco = null;
-  window.addEventListener('message', e => { if (e.origin === location.origin && e.data && e.data.sucre === 'lista') lista = true; });
+  // avance real de la descarga de la ciudad: se muestra sobre la luz si la entrada tiene que esperar
+  const avance = document.createElement('p'); avance.className = 'avance-entrada'; avance.setAttribute('aria-live', 'polite');
+  avance.innerHTML = '<span>Preparando la ciudad</span><i><b></b></i>';
+  let fraccion = 0;
+  window.addEventListener('message', e => {
+    if (e.origin !== location.origin || !e.data) return;
+    if (e.data.sucre === 'lista') lista = true;
+    else if (e.data.sucre === 'avance') { fraccion = Math.max(fraccion, +e.data.fraccion || 0); avance.style.setProperty('--avance', fraccion.toFixed(3)); }
+  });
   const precargar = () => {
     marco = document.createElement('iframe');
     marco.id = 'ciudad-fondo'; marco.title = 'Ciudad 3D de Sucre'; marco.setAttribute('aria-hidden', 'true');
     marco.allow = 'fullscreen'; marco.src = '/ciudad?embebido';
     document.body.append(marco);
   };
-  addEventListener('load', () => setTimeout(precargar, 900));
+  // la ciudad empieza a bajar apenas la portada se dibujó (antes esperaba 900 ms más)
+  if (document.readyState === 'complete') precargar(); else addEventListener('load', precargar, { once: true });
 
   const luz = document.createElement('div'); luz.className = 'luz-entrada';
   const vineta = document.createElement('div'); vineta.className = 'vineta-entrada';
-  document.body.append(vineta, luz);
+  document.body.append(vineta, luz, avance);
 
   let entrando = false;
   const entrar = () => {
@@ -45,7 +54,11 @@
     if (!marco) precargar();
     const t0 = performance.now(), duracion = reducido.matches ? 500 : 2900;
     const esperar = () => {
-      if (performance.now() - t0 < duracion || !lista) return requestAnimationFrame(esperar);
+      if (performance.now() - t0 < duracion || !lista) {
+        if (performance.now() - t0 > duracion) document.body.classList.add('esperando-ciudad');
+        return requestAnimationFrame(esperar);
+      }
+      document.body.classList.remove('esperando-ciudad');
       // la ciudad empieza a dibujar (a la plaza, de cara al monumento) detrás de la luz y se enfoca al revelarse
       document.body.classList.add('revelando');
       marco.contentWindow.postMessage({ sucre: 'entrar' }, location.origin);
