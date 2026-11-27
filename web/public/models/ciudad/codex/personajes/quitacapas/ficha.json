@@ -1,0 +1,91 @@
+{
+  "id": "quitacapas",
+  "nombre": "Francisco Ríos, el Quitacapas",
+  "subtitulo": "La Plata, 1809",
+  "glb": "quitacapas.glb",
+  "blend": "quitacapas.blend",
+  "referencia": "referencia.jpg",
+  "altura_m": 1.73,
+  "esqueleto": {
+    "nombre": "GeneralSkeleton",
+    "ual": 53,
+    "extras": [
+      "capa_hombro",
+      "capa_caida",
+      "sable_envainado",
+      "llave"
+    ]
+  },
+  "clip_inicial": "reposo",
+  "clips": [
+    {
+      "id": "reposo",
+      "nombre": "Espera con la llave",
+      "ual": "Idle_Loop",
+      "bucle": true,
+      "duracion": 2.5,
+      "velocidad_m_s": 0,
+      "descripcion": "Respira y sostiene el paño sobre el hombro, con la llave en la mano derecha."
+    },
+    {
+      "id": "fanfarron_caminar",
+      "nombre": "Marcha fanfarrona",
+      "ual": "Walk_Loop",
+      "bucle": true,
+      "duracion": 1.0833333333333333,
+      "velocidad_m_s": 1.0,
+      "descripcion": "Camina en sitio con el pecho adelantado, la barbilla alta y la capa al hombro."
+    },
+    {
+      "id": "hablar",
+      "nombre": "Cuenta su versión",
+      "ual": "Idle_Talking_Loop",
+      "bucle": true,
+      "duracion": 2.5,
+      "velocidad_m_s": 0,
+      "descripcion": "Acompaña el relato con movimientos de cabeza, hombros y torso."
+    },
+    {
+      "id": "mostrar_llave",
+      "nombre": "Muestra la llave",
+      "ual": "Idle_Loop",
+      "propio": true,
+      "bucle": false,
+      "duracion": 2.25,
+      "velocidad_m_s": 0,
+      "descripcion": "Alza la llave con la derecha, la presenta y vuelve a bajarla."
+    },
+    {
+      "id": "lanzar_monedas",
+      "nombre": "Lanza las monedas",
+      "ual": "Idle_Loop",
+      "propio": true,
+      "bucle": false,
+      "duracion": 2.0833333333333335,
+      "velocidad_m_s": 0,
+      "descripcion": "Recoge la mano derecha, hace el gesto de esparcir las monedas y recupera la postura de espera."
+    },
+    {
+      "id": "reir",
+      "nombre": "Se ríe",
+      "ual": "Idle_Loop",
+      "propio": true,
+      "bucle": false,
+      "duracion": 2.0,
+      "velocidad_m_s": 0,
+      "descripcion": "Echa la cabeza atrás y se le sacuden el pecho y los hombros."
+    }
+  ],
+  "integracion": {
+    "guia": "§3, personaje 2",
+    "frente": "+Z",
+    "vertical": "+Y",
+    "acompanante": "zambito",
+    "evento_monedas": {
+      "clip": "lanzar_monedas",
+      "fotograma": 17,
+      "fps": 24,
+      "hueso": "DEF-hand.R"
+    }
+  }
+}

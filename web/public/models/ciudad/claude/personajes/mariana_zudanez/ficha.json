@@ -1,0 +1,113 @@
+{
+  "id": "mariana_zudanez",
+  "nombre": "Mariana Zudáñez",
+  "subtitulo": "«¡Paisanos, defiendan a mi hermano!» · 25 de mayo de 1809 (Guía #3 · Q-0448-2)",
+  "altura_m": 1.62,
+  "esqueleto": "Universal Animation Library (53 huesos · GeneralSkeleton); falda con vuelo por pierna",
+  "arquetipo": "B · «Sígueme»: de la boca de calle frente a M055 al portón de la Audiencia (atardecer)",
+  "clip_inicial": "reposo_inquieta",
+  "clips": [
+    {
+      "id": "reposo_inquieta",
+      "nombre": "Esperar angustiada",
+      "propio": true,
+      "bucle": true,
+      "duracion": 4.0,
+      "velocidad_m_s": 0.0,
+      "descripcion": "En el hito 0, sin poder quedarse quieta: busca con la mirada a un lado y al otro, se lleva la mano al pecho junto al mantón y cambia el peso de pie."
+    },
+    {
+      "id": "correr_falda",
+      "nombre": "Correr con la falda larga",
+      "propio": true,
+      "bucle": true,
+      "duracion": 0.933,
+      "velocidad_m_s": 2.2,
+      "descripcion": "Carrera hacia el portón de la Audiencia, inclinada hacia adelante, con la mano derecha sujetando el mantón y el ruedo de la falda siguiendo a cada pierna."
+    },
+    {
+      "id": "gritar_brazo_alto",
+      "nombre": "Gritar con el brazo en alto",
+      "propio": true,
+      "bucle": false,
+      "duracion": 2.6,
+      "velocidad_m_s": 0.0,
+      "descripcion": "«¡Paisanos, defiendan a mi hermano!»: alza el brazo izquierdo, lo sacude dos veces y echa la cabeza atrás al gritar."
+    },
+    {
+      "id": "reposo",
+      "nombre": "Reposo (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 2.5,
+      "velocidad_m_s": 0.0,
+      "descripcion": "De pie, el brazo izquierdo caído y la mano derecha en el mantón."
+    },
+    {
+      "id": "caminar",
+      "nombre": "Caminar (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 1.333,
+      "velocidad_m_s": 1.1,
+      "descripcion": "Paso normal en el sitio."
+    },
+    {
+      "id": "caminar_rapido",
+      "nombre": "Paso apurado (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 1.333,
+      "velocidad_m_s": 1.5,
+      "descripcion": "Paso largo y decidido en el sitio."
+    },
+    {
+      "id": "senalar",
+      "nombre": "Señalar el portón",
+      "propio": false,
+      "bucle": false,
+      "duracion": 2.4,
+      "velocidad_m_s": 0.0,
+      "descripcion": "La pose de la lámina: extiende el brazo izquierdo hacia el portón, con la mirada en él, y remarca el gesto dos veces."
+    },
+    {
+      "id": "mirar_atras",
+      "nombre": "Mirar atrás (¿la sigue?)",
+      "propio": false,
+      "bucle": false,
+      "duracion": 1.8,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Gira el torso y la cabeza por encima del hombro izquierdo para ver si el jugador la sigue."
+    },
+    {
+      "id": "hablar",
+      "nombre": "Hablar (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 2.933,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Cuenta el arresto gesticulando con la mano izquierda."
+    },
+    {
+      "id": "llamar_mano",
+      "nombre": "«¡Sígame, por favor!»",
+      "propio": false,
+      "bucle": false,
+      "duracion": 2.0,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Tiende la mano izquierda hacia el jugador y la recoge dos veces, llamándolo."
+    },
+    {
+      "id": "asentir",
+      "nombre": "Asentir",
+      "propio": false,
+      "bucle": false,
+      "duracion": 1.4,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Dos cabeceos firmes."
+    }
+  ],
+  "glb": "mariana_zudanez.glb",
+  "blend": "mariana_zudanez.blend",
+  "referencia": "referencia.png"
+}

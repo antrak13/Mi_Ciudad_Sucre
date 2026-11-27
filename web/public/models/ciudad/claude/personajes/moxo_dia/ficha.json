@@ -1,0 +1,95 @@
+{
+  "id": "moxo_dia",
+  "nombre": "Benito María de Moxó (de día)",
+  "subtitulo": "«Poco le falta para que vivamos en una perfecta anarquía» · 1807-1809 (Guía #24 · R-0722-1)",
+  "altura_m": 1.58,
+  "esqueleto": "Universal Animation Library (53 huesos · GeneralSkeleton); sotana con vuelo por pierna, capa de los hombros",
+  "arquetipo": "C · balcón del Palacio Arzobispal (día); de noche, ver moxo_noche",
+  "clip_inicial": "examinar_lupa",
+  "clips": [
+    {
+      "id": "examinar_lupa",
+      "nombre": "Examinar con la lupa",
+      "propio": true,
+      "bucle": true,
+      "duracion": 4.0,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Acerca la lupa a la concha, gira la concha para verla por todos lados, se inclina y asiente satisfecho: «tengo en el palacio un museo de los tres reinos»."
+    },
+    {
+      "id": "arrugar_papel",
+      "nombre": "Arrugar el pasquín",
+      "propio": true,
+      "bucle": false,
+      "duracion": 4.5,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Baja las manos a la servilleta, encuentra un pasquín, lo mira, lo arruga con las dos manos, lo tira a un lado sacudiendo la cabeza y vuelve a la concha."
+    },
+    {
+      "id": "reposo",
+      "nombre": "Reposo (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 2.5,
+      "velocidad_m_s": 0.0,
+      "descripcion": "De pie con la lupa y la concha; de vez en cuando levanta la vista."
+    },
+    {
+      "id": "caminar",
+      "nombre": "Caminar (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 1.333,
+      "velocidad_m_s": 0.9,
+      "descripcion": "Paso corto y pausado, con la lupa y la concha delante del pecho."
+    },
+    {
+      "id": "hablar",
+      "nombre": "Hablar (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 2.933,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Habla con voz meliflua, gesticulando con la mano de la lupa."
+    },
+    {
+      "id": "saludar",
+      "nombre": "Bendecir",
+      "propio": false,
+      "bucle": false,
+      "duracion": 2.4,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Saludo de arzobispo: traza la señal de la cruz en el aire con la mano derecha."
+    },
+    {
+      "id": "asentir",
+      "nombre": "Asentir",
+      "propio": false,
+      "bucle": false,
+      "duracion": 1.4,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Dos cabeceos lentos."
+    },
+    {
+      "id": "mirar_atras",
+      "nombre": "Mirar atrás",
+      "propio": false,
+      "bucle": false,
+      "duracion": 1.8,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Gira la cabeza y el torso por encima del hombro derecho (¿quién mete los pasquines?)."
+    },
+    {
+      "id": "senalar",
+      "nombre": "Señalar con la lupa",
+      "propio": false,
+      "bucle": false,
+      "duracion": 2.2,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Señala algo de la plaza con la lupa y vuelve a la concha."
+    }
+  ],
+  "glb": "moxo_dia.glb",
+  "blend": "moxo_dia.blend",
+  "referencia": "referencia.png"
+}

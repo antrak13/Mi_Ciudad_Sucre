@@ -1,0 +1,121 @@
+{
+  "id": "sirviente_lemoine",
+  "nombre": "El sirviente mudo de María Teresa Bustos de Lemoine",
+  "referencia": "personas/sirviente_mudo/Simplified low-poly historical messenger (1).png",
+  "version": 2,
+  "unidades": "metros",
+  "altura_con_sombrero": 1.86,
+  "estilo": "low poly angular según la nueva lámina: ojos planos, nariz de cuña, ropa de grandes planos y pigmento marrón discreto",
+  "observaciones": [
+    "Rostro angular juvenil, frente ancha y mandíbula estrecha; ojos blancos planos con pupila negra ovalada, cejas rectangulares y nariz en cuña sin bolas ni fosas sueltas.",
+    "Sombrero ancho de ocho lados, ala con espesor y copa baja troncopiramidal; sin cinta negra añadida.",
+    "Chaqueta de hombros continuos y mangas rectas, dos botones ocres visibles; solapas discretas y forro granate.",
+    "Camisa marfil abierta en V con cuello vuelto y puños rectangulares; sin tapeta abotonada añadida.",
+    "Calzón de perneras anchas y planas hasta debajo de las rodillas, vueltas rectas sin botones añadidos.",
+    "Pantorrillas cortas y angulares, zapatos marrones bajos con punta cuadrada.",
+    "Mano izquierda sujetando la solapa, borde de carta crema cerca del pecho.",
+    "La vista gris posterior de la lámina indica la forma, no una segunda paleta."
+  ],
+  "ficcion": {
+    "origen": "No documentado; no se asigna una identidad étnica al personaje.",
+    "edad": "Apariencia juvenil según la lámina; edad exacta no documentada.",
+    "historico": "Contexto y conducta suministrados por el usuario; no se incorporan fuentes externas."
+  },
+  "paleta": {
+    "chaqueta": "#5f3d28",
+    "calzon": "#4b3a2b",
+    "sombrero": "#633f2e",
+    "piel": "#c88b4e",
+    "camisa": "#cbbb9d",
+    "forro": "#72392e",
+    "pelo": "#211d17",
+    "zapato": "#513722",
+    "suela": "#38271c",
+    "boton": "#ad753b",
+    "papel": "#ded2af",
+    "costura": "#aa8b61",
+    "ojo": "#e0d4b7",
+    "iris": "#241f1a",
+    "boca": "#744a2b",
+    "cinto": "#3c342c"
+  },
+  "movimiento": {
+    "caminar": {
+      "duracion": 1.0,
+      "velocidad_m_s": 1.2,
+      "bucle": true
+    },
+    "caminar_rapido": {
+      "duracion": 0.72,
+      "velocidad_m_s": 1.8,
+      "bucle": true
+    },
+    "sigilo": {
+      "duracion": 1.6,
+      "velocidad_m_s": 0.55,
+      "bucle": true
+    },
+    "reposo": {
+      "duracion": 3.0,
+      "velocidad_m_s": 0,
+      "bucle": true
+    },
+    "asentir": {
+      "duracion": 2.0,
+      "velocidad_m_s": 0,
+      "bucle": false
+    },
+    "silencio": {
+      "duracion": 2.8,
+      "velocidad_m_s": 0,
+      "bucle": false
+    },
+    "senalar": {
+      "duracion": 2.8,
+      "velocidad_m_s": 0,
+      "bucle": false
+    },
+    "mirar_atras": {
+      "duracion": 2.6,
+      "velocidad_m_s": 0,
+      "bucle": false
+    },
+    "apartarse": {
+      "duracion": 2.0,
+      "velocidad_m_s": 0,
+      "bucle": false
+    },
+    "mostrar_forro": {
+      "duracion": 3.4,
+      "velocidad_m_s": 0,
+      "bucle": false
+    }
+  },
+  "mecanicas": {
+    "carta": {
+      "firma": "Parra",
+      "hueso": "carta",
+      "interaccion": "inspeccionar_forro"
+    },
+    "forro": {
+      "hueso": "solapa_izq",
+      "interaccion": "descoser_forro"
+    },
+    "ruta_narrativa": [
+      "casa_Lemoine",
+      "casa_Cuellar",
+      "casa_Zudanez",
+      "casa_Lemoine"
+    ],
+    "ruta_espacial": "Pendiente de localizar las casas en el juego; no se inventan coordenadas.",
+    "colision": {
+      "tipo": "capsula",
+      "radio": 0.23,
+      "altura": 1.7,
+      "centro_y": 0.85
+    },
+    "clips_en_sitio": true,
+    "frente_gltf": "+Z",
+    "arriba_gltf": "+Y"
+  }
+}

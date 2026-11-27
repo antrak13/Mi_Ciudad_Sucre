@@ -1,0 +1,86 @@
+{
+  "id": "sirviente_lemoine",
+  "version": 2,
+  "fecha": "2026-11-24T23:34:34.469541-04:00",
+  "referencia_original": "personas/sirviente_mudo/Simplified low-poly historical messenger (1).png",
+  "triangulos": 2264,
+  "huesos": 57,
+  "clips": 10,
+  "bytes_glb": 806060,
+  "errores_gltf": 0,
+  "advertencias_gltf": 0,
+  "pruebas_archivo": [
+    "57 huesos con dedos completos",
+    "Piel sin vértices sin peso y máximo cuatro influencias",
+    "Dos mallas, dos imágenes embebidas y UV completos",
+    "Diez clips con duración esperada y raíz inmóvil",
+    "Bucles sin salto en las transformaciones de cierre",
+    "Forro y carta articulados y con canales reales"
+  ],
+  "pruebas_navegador": [
+    "GLB real cargado con diez clips",
+    "13 poses por clip: malla finita, suelo entre -1 y +1,5 cm en cada pose",
+    "Velocidad del pie de apoyo coherente con navegación, tobillo a 13,5 cm e índice a menos de 3,5 cm de los labios",
+    "Cambio de marcha, retorno tras gesto e instancias con esqueletos independientes",
+    "Botones de esqueleto, topología y comparación con referencia",
+    "390 px sin desbordamiento"
+  ],
+  "distancia_indice_labios_m": 0.003817956180400072,
+  "muestras_por_clip": 13,
+  "errores_javascript": [],
+  "comparacion_visual": "comparacion.png: referencia nueva frente a render real; recorte y escala uniforme. Revisión visual del agente.",
+  "archivos": {
+    "sirviente.glb": {
+      "bytes": 806060,
+      "sha256": "d2c0b26e5aac88c8b96aac3304288aef02b3f9648c36c04a87385e5524325f0f"
+    },
+    "sirviente.blend": {
+      "bytes": 729299,
+      "sha256": "f008ab5e87bb73655fec62e80f93efa6ec394513f865be23c642d93149951291"
+    },
+    "sirviente_color.png": {
+      "bytes": 81327,
+      "sha256": "e319415e2e0d8d00f575afa49dc184a32dbf90caacc32fa96a0b0ce251d1083d"
+    },
+    "carta_parra.png": {
+      "bytes": 84892,
+      "sha256": "064cfd519ec86c0de477bf1485af018699fd9bc0aab34c78644e7bca7f8c741e"
+    },
+    "sirviente.json": {
+      "bytes": 3589,
+      "sha256": "81c95a6b08130476a2e32a43a7dbbe34711a33571a5bbda2b547910eb2b8d2d1"
+    },
+    "index.html": {
+      "bytes": 6027,
+      "sha256": "3b69e1b8ab0a96248985a63207c169c6e56e884e54e4e8bea3e05b2378e314c0"
+    },
+    "visor.bundle.js": {
+      "bytes": 668434,
+      "sha256": "32157f47a5613399042bae5967f6e990939cd5621737a05e60f5f45a93851026"
+    },
+    "personaje_animado.mjs": {
+      "bytes": 2941,
+      "sha256": "207894eea0eec2f68f90c090e05379e3a7a56ea94994815988d59946fff30170"
+    },
+    "LEEME.md": {
+      "bytes": 8033,
+      "sha256": "231f1ca464aa2f3b0f9880bdcc92fff0a80ee93f7e88fba09e7058d1449a0361"
+    },
+    "referencia.png": {
+      "bytes": 1622230,
+      "sha256": "152e54960c7ceedde324db0d101986e6d610bb2e4079ac123f5244e4ee817f4e"
+    },
+    "vista_previa.png": {
+      "bytes": 1080988,
+      "sha256": "142e87b2a18118e41c0c5a30e94a5109f50a79c460f666b780e5d49707ed8a5c"
+    },
+    "comparacion.png": {
+      "bytes": 911839,
+      "sha256": "adf762e6aec3a55f6398e68091aeb202f56b17e8c3da31e6c7b9bde3592dd651"
+    },
+    "THREE-LICENSE.txt": {
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    }
+  }
+}

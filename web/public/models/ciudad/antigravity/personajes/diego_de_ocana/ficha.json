@@ -1,0 +1,96 @@
+{
+  "id": "diego_de_ocana",
+  "nombre": "Fray Diego de Ocaña",
+  "subtitulo": "Pintor jerónimo de la Virgen de Guadalupe · La Plata, 1601–1602 (Guía #7)",
+  "glb": "diego_de_ocana.glb",
+  "blend": "diego_de_ocana.blend",
+  "referencia": "referencia.png",
+  "altura_m": 1.68,
+  "esqueleto": "Universal Animation Library (53 huesos · GeneralSkeleton)",
+  "arquetipo": "A · Fijo (gradas del atrio de la Catedral, M055)",
+  "clip_inicial": "pintar",
+  "caballete_demo": true,
+  "clips": [
+    {
+      "id": "pintar",
+      "nombre": "Pintar la Virgen de Guadalupe",
+      "propio": true,
+      "bucle": true,
+      "duracion": 4.5,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Toma pigmento de la paleta y aplica trazos largos y toques finos sobre el lienzo."
+    },
+    {
+      "id": "retroceder_mirar_cuadro",
+      "nombre": "Retroceder y mirar el cuadro",
+      "propio": true,
+      "bucle": false,
+      "duracion": 4.0,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Da un paso atrás cambiando el apoyo, inclina la cabeza estudiando la obra y asiente."
+    },
+    {
+      "id": "reposo",
+      "nombre": "Reposo atento (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 2.5,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Respiración y balanceo natural de UAL sosteniendo el pincel y la paleta."
+    },
+    {
+      "id": "hablar",
+      "nombre": "Hablar y relatar su viaje (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 2.933,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Conversación natural de UAL acompañada por gestos expresivos con la mano del pincel."
+    },
+    {
+      "id": "caminar",
+      "nombre": "Caminar solemne (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 1.333,
+      "velocidad_m_s": 1.15,
+      "descripcion": "Ciclo de marcha formal de UAL en sitio bajo el hábito jerónimo, protegiendo la paleta."
+    },
+    {
+      "id": "caminar_rapido",
+      "nombre": "Paso vivo (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 0.958,
+      "velocidad_m_s": 1.65,
+      "descripcion": "Paso ágil en sitio conservando el equilibrio del manto y los útiles de pintor."
+    },
+    {
+      "id": "saludar",
+      "nombre": "Invitar a acercarse",
+      "propio": false,
+      "bucle": false,
+      "duracion": 2.4,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Gira el rostro hacia el visitante, abre la mano del pincel en bienvenida e inclina la cabeza."
+    },
+    {
+      "id": "asentir",
+      "nombre": "Asentir y despedirse",
+      "propio": false,
+      "bucle": false,
+      "duracion": 2.0,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Reverencia serena de fraile jerónimo al cerrar la ficha."
+    },
+    {
+      "id": "senalar",
+      "nombre": "Señalar la capilla",
+      "propio": false,
+      "bucle": false,
+      "duracion": 2.5,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Señala hacia la capilla y la plaza donde se representará su comedia."
+    }
+  ]
+}

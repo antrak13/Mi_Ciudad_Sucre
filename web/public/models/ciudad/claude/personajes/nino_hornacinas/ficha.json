@@ -1,0 +1,158 @@
+{
+  "id": "nino_hornacinas",
+  "nombre": "El niño del caballito de palo",
+  "subtitulo": "Leyenda de las 14 hornacinas de San Francisco (Guía #21 · C-1039-1)",
+  "altura_m": 1.3,
+  "esqueleto": "Universal Animation Library (53 huesos · GeneralSkeleton) + hueso «palo» (caballito) en la mano izquierda",
+  "arquetipo": "E · Horario (atardecer y noche), plazoleta de San Francisco (M013)",
+  "clip_inicial": "galopar_palo",
+  "clips": [
+    {
+      "id": "galopar_palo",
+      "nombre": "Galopar en el caballito de palo",
+      "propio": true,
+      "bucle": true,
+      "duracion": 0.667,
+      "velocidad_m_s": 2.0,
+      "descripcion": "Monta el palo entre las piernas con las dos manos y galopa a saltitos por la plazoleta; la cabeza del caballito cabecea a cada salto."
+    },
+    {
+      "id": "huir",
+      "nombre": "Huir hacia la columna",
+      "propio": true,
+      "bucle": true,
+      "duracion": 2.667,
+      "velocidad_m_s": 3.4,
+      "descripcion": "Corre agachado con el caballito apretado contra el pecho y mira una vez por encima del hombro al que se acerca."
+    },
+    {
+      "id": "ocultarse",
+      "nombre": "Ocultarse tras la columna",
+      "propio": true,
+      "bucle": false,
+      "duracion": 1.6,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Frena, se encoge y se agacha abrazando el caballito, con una última mirada de reojo; termina quieto para el fundido de desaparición."
+    },
+    {
+      "id": "asomarse",
+      "nombre": "Asomarse desde la columna",
+      "propio": true,
+      "bucle": true,
+      "duracion": 3.2,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Agachado tras la columna (que queda a su derecha), se asoma, sonríe y se vuelve a esconder."
+    },
+    {
+      "id": "reir",
+      "nombre": "Risa traviesa",
+      "propio": true,
+      "bucle": false,
+      "duracion": 1.8,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Se tapa la boca con la mano y se ríe sacudiendo los hombros, con la cabeza ladeada: el aviso antes de echar a correr."
+    },
+    {
+      "id": "reposo",
+      "nombre": "Reposo con el caballito (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 2.5,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Respira y cambia el peso de pie; mira de reojo y golpea una vez el palo contra el suelo."
+    },
+    {
+      "id": "caminar",
+      "nombre": "Caminar (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 1.333,
+      "velocidad_m_s": 0.85,
+      "descripcion": "Paso de niño en el sitio con el caballito en la mano y el otro brazo suelto."
+    },
+    {
+      "id": "caminar_rapido",
+      "nombre": "Trotar (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 0.933,
+      "velocidad_m_s": 1.9,
+      "descripcion": "Trote ligero en el sitio llevando el caballito de pie."
+    },
+    {
+      "id": "sigilo",
+      "nombre": "Andar a escondidas (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 2.0,
+      "velocidad_m_s": 0.5,
+      "descripcion": "Agachado, paso lento y largo, con el caballito pegado al cuerpo."
+    },
+    {
+      "id": "mirar_atras",
+      "nombre": "Mirar atrás",
+      "propio": false,
+      "bucle": false,
+      "duracion": 1.6,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Gira torso y cabeza por encima del hombro derecho y vuelve."
+    },
+    {
+      "id": "hablar",
+      "nombre": "Gesticular (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 2.933,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Gestos de conversación con la mano libre mientras la ficha narra la leyenda."
+    },
+    {
+      "id": "saludar",
+      "nombre": "Saludar",
+      "propio": false,
+      "bucle": false,
+      "duracion": 1.8,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Agita la mano derecha a la altura de la cara."
+    },
+    {
+      "id": "asentir",
+      "nombre": "Asentir",
+      "propio": false,
+      "bucle": false,
+      "duracion": 1.4,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Dos cabeceos cortos."
+    },
+    {
+      "id": "senalar",
+      "nombre": "Señalar las hornacinas",
+      "propio": false,
+      "bucle": false,
+      "duracion": 2.2,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Señala hacia arriba y adelante, a la altura de las hornacinas del muro."
+    },
+    {
+      "id": "silencio",
+      "nombre": "Pedir silencio",
+      "propio": false,
+      "bucle": false,
+      "duracion": 1.8,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Se lleva el índice a los labios («chist») con una sonrisa."
+    },
+    {
+      "id": "llamar_mano",
+      "nombre": "Llamar con la mano",
+      "propio": false,
+      "bucle": false,
+      "duracion": 2.0,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Con la palma hacia arriba, invita a acercarse moviendo los dedos dos veces."
+    }
+  ],
+  "glb": "nino_hornacinas.glb",
+  "blend": "nino_hornacinas.blend",
+  "referencia": "referencia.png"
+}

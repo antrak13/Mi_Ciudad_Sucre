@@ -1,0 +1,86 @@
+{
+  "id": "moxo_noche",
+  "nombre": "Benito María de Moxó (de noche)",
+  "subtitulo": "La huida del 25 de mayo de 1809: «esperó en la loma hasta las tres de la mañana y huyó a pie» (Guía #24)",
+  "altura_m": 1.58,
+  "esqueleto": "Universal Animation Library (53 huesos · GeneralSkeleton); sotana con vuelo por pierna, capa de los hombros",
+  "arquetipo": "B y E · la noche del 25 (época 1809): de la plaza a la plazuela de San Agustín y la salida",
+  "clip_inicial": "huir_mirando_atras",
+  "clips": [
+    {
+      "id": "huir_mirando_atras",
+      "nombre": "Huir mirando atrás",
+      "propio": true,
+      "bucle": true,
+      "duracion": 2.667,
+      "velocidad_m_s": 1.3,
+      "descripcion": "Paso apurado, encogido bajo la capa, con la mano en el pecho; a mitad del ciclo gira la cabeza por encima del hombro izquierdo para ver si lo siguen."
+    },
+    {
+      "id": "reposo",
+      "nombre": "Esperar nervioso",
+      "propio": false,
+      "bucle": true,
+      "duracion": 3.0,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Espera en la loma hasta las tres de la mañana: aprieta la capa y mira a un lado y al otro."
+    },
+    {
+      "id": "caminar",
+      "nombre": "Caminar (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 1.333,
+      "velocidad_m_s": 1.0,
+      "descripcion": "Paso corto, con la capa apretada contra el pecho."
+    },
+    {
+      "id": "caminar_rapido",
+      "nombre": "Paso apurado (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 1.333,
+      "velocidad_m_s": 1.4,
+      "descripcion": "Paso largo, inclinado hacia adelante."
+    },
+    {
+      "id": "mirar_atras",
+      "nombre": "Mirar atrás",
+      "propio": false,
+      "bucle": false,
+      "duracion": 1.8,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Se detiene y mira por encima del hombro izquierdo, asustado."
+    },
+    {
+      "id": "hablar",
+      "nombre": "Hablar (UAL)",
+      "propio": false,
+      "bucle": true,
+      "duracion": 2.933,
+      "velocidad_m_s": 0.0,
+      "descripcion": "«Dejaré la mitra si se retiran»: habla gesticulando con la mano izquierda."
+    },
+    {
+      "id": "llamar_mano",
+      "nombre": "Llamar a los clérigos",
+      "propio": false,
+      "bucle": false,
+      "duracion": 2.0,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Con la mano izquierda llama a los dos clérigos para que lo sigan."
+    },
+    {
+      "id": "asentir",
+      "nombre": "Asentir",
+      "propio": false,
+      "bucle": false,
+      "duracion": 1.4,
+      "velocidad_m_s": 0.0,
+      "descripcion": "Dos cabeceos rápidos."
+    }
+  ],
+  "glb": "moxo_noche.glb",
+  "blend": "moxo_noche.blend",
+  "referencia": "referencia.png"
+}

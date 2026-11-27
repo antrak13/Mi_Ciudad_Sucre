@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>El mensajero · Mi Ciudad</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#f0e8da;background:#252824;color-scheme:dark}*{box-sizing:border-box}body{margin:0}main{display:grid;grid-template-columns:minmax(0,1fr) 320px;height:100dvh;min-height:600px}.escena{position:relative;min-width:0;overflow:hidden;background:#b3a49a}canvas{display:block;width:100%;height:100%;touch-action:none}.marca{position:absolute;top:28px;left:30px;color:#493b30;pointer-events:none}.marca span{font-size:10px;letter-spacing:.25em;text-transform:uppercase}.marca p{font-family:Georgia,serif;font-size:27px;margin:8px 0}.ayuda{position:absolute;bottom:20px;left:28px;color:#564b42;font-size:11px;pointer-events:none}aside{padding:29px 24px 20px;overflow-y:auto;border-left:1px solid #48483e}small.eyebrow{font-size:9px;letter-spacing:.24em;color:#b8a37b;text-transform:uppercase}h1{font:normal 32px/1.1 Georgia,serif;letter-spacing:-.025em;margin:14px 0 12px}p.intro{color:#b7b9aa;font-size:12px;line-height:1.7;margin-bottom:25px}.label{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#969b8b;margin:23px 0 10px}.buttons{display:flex;flex-wrap:wrap;gap:6px}button,a.descarga{font:inherit;font-size:11px;color:#d9ddce;border:1px solid #4d5346;background:transparent;padding:9px 11px;border-radius:3px;cursor:pointer;text-decoration:none;line-height:1.25;min-height:34px}button:hover,a.descarga:hover{background:#3d4336}button[aria-pressed=true]{background:#c6b38b;border-color:#c6b38b;color:#272d23}button:focus-visible,a:focus-visible{outline:2px solid #f2dab0;outline-offset:3px}#descripcion{font-size:11px;line-height:1.6;color:#aaaF9f;min-height:35px}input[type=range]{width:100%;accent-color:#ccb58a;margin:10px 0}label{font-size:11px;color:#b7beaa;display:block}#valor-velocidad{float:right;font-variant-numeric:tabular-nums}#descoser{width:100%;border-color:#a28a60;color:#e5cfaa;text-align:left}footer{border-top:1px solid #464d3e;margin-top:26px;padding-top:18px}#datos{font-size:10px;color:#89937e;line-height:1.8;margin:13px 0}#estado{position:absolute;right:20px;bottom:20px;font-size:10px;background:#2d3428dd;padding:8px 12px;border-radius:20px;color:#dfe7d4}dialog{border:1px solid #6e6859;background:#252824;color:#fff;max-width:96vw;padding:12px}dialog::backdrop{background:#000c}dialog img{max-width:85vw;max-height:80dvh;display:block}dialog button{margin-bottom:10px}.nota{font-size:10px;color:#8f9982;line-height:1.7}a{color:inherit}@media(max-width:760px){main{grid-template-columns:1fr;height:auto;min-height:100dvh}.escena{height:65dvh;min-height:420px}aside{border-left:0;padding:24px}.marca{left:22px;top:20px}.marca p{font-size:23px}.ayuda{left:20px;bottom:52px}.buttons button{min-height:40px}h1{font-size:29px}#estado{bottom:14px;right:14px}dialog img{max-width:87vw}}
+</style>
+<main>
+<section class="escena" aria-label="Visor 3D del sirviente">
+  <canvas aria-label="Arrastra para rotar el personaje; pellizca para acercarte"></canvas>
+  <div class="marca"><span>Mi Ciudad / personajes / 001 · Low poly v2</span><p>El mensajero</p></div>
+  <div class="ayuda">Arrastra para girar · rueda o pellizca para acercarte</div>
+  <div id="estado" role="status">Cargando personaje…</div>
+</section>
+<aside>
+  <small class="eyebrow">La Plata · 1809</small>
+  <h1>El sirviente<br>de los Lemoine</h1>
+  <p class="intro">No dice una palabra. Entre las costuras de su chaqueta lleva una carta firmada «Parra».</p>
+  <div class="label">Punto de vista</div>
+  <div class="buttons"><button data-vista="estudio" aria-pressed="true">¾</button><button data-vista="frente">Frente</button><button data-vista="perfil">Perfil</button><button data-vista="espalda">Espalda</button><button data-vista="rostro">Rostro</button><button data-vista="forro">Forro</button></div>
+  <div class="label">Movimiento</div>
+  <div class="buttons"><button data-clip="reposo" aria-pressed="true">Reposo</button><button data-clip="caminar">Caminar</button><button data-clip="caminar_rapido">Paso rápido</button><button data-clip="sigilo">Sigilo</button></div>
+  <div class="label">Gestos sin palabras</div>
+  <div class="buttons"><button data-clip="asentir">Asentir</button><button data-clip="silencio">Silencio</button><button data-clip="senalar">Señalar</button><button data-clip="mirar_atras">Mirar atrás</button><button data-clip="apartarse">Apartarse</button></div>
+  <p id="descripcion">Protege la carta y observa en silencio.</p>
+  <label for="tiempo">Fotograma</label><input id="tiempo" aria-label="Posición en la animación" type="range" min="0" max="1" value="0" step=".001">
+  <label for="velocidad">Velocidad de reproducción <span id="valor-velocidad">1.00×</span></label><input id="velocidad" type="range" min=".1" max="2" step=".05" value="1">
+  <div class="buttons"><button id="pausa" aria-pressed="false">Pausar</button><button id="girar" aria-pressed="false">Girar</button><button id="esqueleto" aria-pressed="false">Esqueleto</button><button id="malla" aria-pressed="false">Malla</button></div>
+  <div class="label">La carta oculta</div>
+  <button id="descoser">Abrir el forro y mostrar la carta ↗</button>
+  <footer><div class="buttons"><a class="descarga" href="sirviente.glb" download>Modelo GLB ↓</a><a class="descarga" href="sirviente.blend" download>Blender ↓</a><button id="referencia">Ver diseño</button><a class="descarga" href="comparacion.png" target="_blank" rel="noopener">Comparación</a></div><p id="datos"></p><p class="nota">Personaje de ficción basado en el diseño. Edad y origen no documentados. <a href="LEEME.md">Integración y archivos</a></p></footer>
+</aside>
+</main>
+<dialog id="lamina"><button id="cerrar-referencia">Cerrar referencia</button><img src="referencia.png" alt="Nueva referencia Simplified low-poly historical messenger: cuerpo a color y espalda en arcilla"></dialog>
+<script src="visor.bundle.js" defer></script>
+</html>

@@ -1,0 +1,49 @@
+[
+  {
+    "id": "reposo",
+    "nombre": "Espera con la caja",
+    "ual": "Idle_Loop",
+    "bucle": true,
+    "duracion": 2.5,
+    "velocidad_m_s": 0,
+    "descripcion": "Respira mientras sostiene la caja bajo el brazo izquierdo."
+  },
+  {
+    "id": "caminar",
+    "nombre": "Marcha formal",
+    "ual": "Walk_Formal_Loop",
+    "bucle": true,
+    "duracion": 1.1666666666666667,
+    "velocidad_m_s": 0.78,
+    "descripcion": "Camina en sitio con la caja apoyada contra el costado."
+  },
+  {
+    "id": "hablar",
+    "nombre": "Cuenta su versión",
+    "ual": "Idle_Talking_Loop",
+    "bucle": true,
+    "duracion": 2.5,
+    "velocidad_m_s": 0,
+    "descripcion": "Acompaña el relato con movimientos cortos de cabeza, hombros y mano libre."
+  },
+  {
+    "id": "negar",
+    "nombre": "Niega con la cabeza",
+    "ual": "Idle_Loop",
+    "propio": true,
+    "bucle": false,
+    "duracion": 1.75,
+    "velocidad_m_s": 0,
+    "descripcion": "Gira la cabeza de lado a lado y vuelve a mirar hacia el interlocutor."
+  },
+  {
+    "id": "tamborilear_caja",
+    "nombre": "Tamborilea en la caja",
+    "ual": "Idle_Loop",
+    "propio": true,
+    "bucle": false,
+    "duracion": 3.0,
+    "velocidad_m_s": 0,
+    "descripcion": "Mira la caja, acerca la mano derecha y alterna golpes breves con los dedos sobre la tapa."
+  }
+]

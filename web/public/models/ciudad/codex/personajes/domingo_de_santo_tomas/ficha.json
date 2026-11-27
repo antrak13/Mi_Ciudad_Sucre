@@ -1,0 +1,75 @@
+{
+  "id": "domingo_de_santo_tomas",
+  "nombre": "Fray Domingo de Santo Tomás",
+  "subtitulo": "La Gramática quechua · La Plata, 1563–1570",
+  "glb": "domingo_de_santo_tomas.glb",
+  "blend": "domingo_de_santo_tomas.blend",
+  "referencia": "referencia.jpg",
+  "altura_m": 1.69,
+  "esqueleto": {
+    "nombre": "GeneralSkeleton",
+    "ual": 53,
+    "extras": [
+      "libro",
+      "habito_der",
+      "habito_izq"
+    ]
+  },
+  "clip_inicial": "reposo",
+  "clips": [
+    {
+      "id": "reposo",
+      "nombre": "Espera leyendo",
+      "ual": "Idle_Loop",
+      "bucle": true,
+      "duracion": 3.5,
+      "velocidad_m_s": 0,
+      "descripcion": "Respira con el libro abierto y la vista baja."
+    },
+    {
+      "id": "leer_libro",
+      "nombre": "Lee la Gramática",
+      "ual": "Idle_Loop",
+      "propio": true,
+      "bucle": false,
+      "duracion": 4.25,
+      "velocidad_m_s": 0,
+      "descripcion": "Inclina la cabeza y recorre las páginas con la mirada. Cambia apenas el ángulo del libro sin soltarlo."
+    },
+    {
+      "id": "saludar",
+      "nombre": "Levanta la vista y saluda",
+      "ual": "Idle_Loop",
+      "propio": true,
+      "bucle": false,
+      "duracion": 2.3333333333333335,
+      "velocidad_m_s": 0,
+      "descripcion": "Mira hacia quien se acerca, inclina la cabeza y retoma la lectura."
+    },
+    {
+      "id": "hablar",
+      "nombre": "Explica una palabra",
+      "ual": "Idle_Talking_Loop",
+      "bucle": true,
+      "duracion": 2.5,
+      "velocidad_m_s": 0,
+      "descripcion": "Asiente y acompaña la explicación con el libro entre las manos."
+    },
+    {
+      "id": "caminar",
+      "nombre": "Camina con el libro",
+      "ual": "Walk_Formal_Loop",
+      "bucle": true,
+      "duracion": 1.3333333333333333,
+      "velocidad_m_s": 0.62,
+      "descripcion": "Da pasos cortos con el libro abierto y los brazos recogidos."
+    }
+  ],
+  "integracion": {
+    "guia": "§5, personaje 25",
+    "frente": "+Z",
+    "vertical": "+Y",
+    "gesto_espera": "leer_libro",
+    "gesto_llegada": "saludar"
+  }
+}

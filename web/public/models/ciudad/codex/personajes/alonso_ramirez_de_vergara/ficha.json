@@ -1,0 +1,83 @@
+{
+  "id": "alonso_ramirez_de_vergara",
+  "nombre": "Alonso Ramírez de Vergara",
+  "subtitulo": "Obispo de Charcas · Procesión de Guadalupe, 1602",
+  "glb": "alonso_ramirez_de_vergara.glb",
+  "blend": "alonso_ramirez_de_vergara.blend",
+  "referencia": "referencia.jpg",
+  "altura_m": 1.88,
+  "esqueleto": {
+    "nombre": "GeneralSkeleton",
+    "ual": 53,
+    "extras": [
+      "incensario"
+    ]
+  },
+  "clip_inicial": "reposo",
+  "clips": [
+    {
+      "id": "reposo",
+      "nombre": "Reposo con el incensario",
+      "ual": "Idle_Loop",
+      "bucle": true,
+      "duracion": 2.5,
+      "velocidad_m_s": 0,
+      "descripcion": "Respiración y cambios de peso con ambos pies apoyados."
+    },
+    {
+      "id": "caminar",
+      "nombre": "Paso de procesión",
+      "ual": "Walk_Formal_Loop",
+      "bucle": true,
+      "duracion": 1.3333333333333333,
+      "velocidad_m_s": 0.56,
+      "descripcion": "Marcha ceremonial en sitio. El incensario responde al paso."
+    },
+    {
+      "id": "hablar",
+      "nombre": "Hablar con Ocaña",
+      "ual": "Idle_Talking_Loop",
+      "bucle": true,
+      "duracion": 2.9583333333333335,
+      "velocidad_m_s": 0,
+      "descripcion": "El torso y la mirada acompañan la conversación. Conserva el agarre de las cadenas."
+    },
+    {
+      "id": "incensar",
+      "nombre": "Incensar la imagen de Guadalupe",
+      "ual": "Idle_Loop",
+      "propio": true,
+      "bucle": false,
+      "duracion": 3.75,
+      "velocidad_m_s": 0,
+      "descripcion": "Levanta el incensario, hace dos impulsos hacia la imagen y deja que las cadenas pierdan el balanceo."
+    },
+    {
+      "id": "asentir",
+      "nombre": "Inclinar la cabeza",
+      "ual": "Idle_Loop",
+      "bucle": false,
+      "duracion": 1.75,
+      "velocidad_m_s": 0,
+      "descripcion": "Inclina la cabeza y regresa a la pose inicial de reposo."
+    }
+  ],
+  "integracion": {
+    "guia": "§7.4 Procesión de Guadalupe",
+    "frente": "+Z",
+    "vertical": "+Y",
+    "clips_propios": [
+      "incensar"
+    ],
+    "destinos": [
+      "Catedral de La Plata",
+      "Plaza 25 de Mayo"
+    ],
+    "fuentes": [
+      "Q-0127-1",
+      "Q-0128-1",
+      "G p. 108-109",
+      "Ocaña, fols. 232v–234v"
+    ]
+  }
+}

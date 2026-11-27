@@ -1,0 +1,48 @@
+[
+  {
+    "id": "reposo",
+    "nombre": "Espera atento",
+    "ual": "Idle_Loop",
+    "bucle": true,
+    "duracion": 2.5,
+    "velocidad_m_s": 0,
+    "descripcion": "Respira, cambia el apoyo y sostiene la capa doblada."
+  },
+  {
+    "id": "caminar",
+    "nombre": "Sigue al Quitacapas",
+    "ual": "Walk_Loop",
+    "bucle": true,
+    "duracion": 1.0,
+    "velocidad_m_s": 0.94,
+    "descripcion": "Camina en sitio con el brazo libre balanceándose. La capa sigue su antebrazo izquierdo."
+  },
+  {
+    "id": "caminar_rapido",
+    "nombre": "Acorta la distancia",
+    "ual": "Walk_Loop",
+    "bucle": true,
+    "duracion": 0.7916666666666666,
+    "velocidad_m_s": 1.18,
+    "descripcion": "Paso más vivo sin perder el agarre del bulto."
+  },
+  {
+    "id": "cargar_bulto",
+    "nombre": "Acomoda la capa doblada",
+    "ual": "Idle_Loop",
+    "propio": true,
+    "bucle": false,
+    "duracion": 2.25,
+    "velocidad_m_s": 0,
+    "descripcion": "Mira la capa, recoge el codo y vuelve a sujetar el bulto contra el pecho."
+  },
+  {
+    "id": "mirar_atras",
+    "nombre": "Mira por encima del hombro",
+    "ual": "Idle_Loop",
+    "bucle": false,
+    "duracion": 2.0833333333333335,
+    "velocidad_m_s": 0,
+    "descripcion": "Gira el torso y la mirada antes de retomar la pose de espera."
+  }
+]
