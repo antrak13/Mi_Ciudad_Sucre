@@ -59,6 +59,8 @@ archivo de licencia.
 
 # Vive la Historia · Casa de la Libertad
 
+[![Pruebas](https://github.com/antrak13/Mi_Ciudad_Sucre/actions/workflows/pruebas.yml/badge.svg)](https://github.com/antrak13/Mi_Ciudad_Sucre/actions/workflows/pruebas.yml)
+
 Juego educativo en primera persona sobre la historia de la **Casa de la Libertad** (Sucre, Bolivia).
 El jugador recorre la Sala Mayor en 1825, cumple misiones, toma decisiones y descubre lo que realmente pasó.
 **Cada dato histórico del juego se muestra en una ficha con su fuente**, priorizando fuentes oficiales.
@@ -70,6 +72,7 @@ Hackathon Regional 2026 · Sede Sucre · Sector Patrimonio y educación.
 | Parte | Estado |
 | --- | --- |
 | Escena 1: La Asamblea de 1825 | Jugable de inicio a fin, con arquitectura de Blender, texturas PBR y luz horneada |
+| Personajes de la Escena 1 | 5 personas con ropa de 1825 (MakeHuman), que miran al jugador y gesticulan al hablar (`blender/personajes_1825.py`) |
 | Sistema de fuentes y fichas | Listo: 10 fuentes (5 oficiales), 20 fichas |
 | Escenas 2 (Juana Azurduy, 1816) y 3 (Universidad, 1809) | Fichas cargadas; jugabilidad pendiente |
 | Personajes y brazos del jugador | Provisionales (cápsulas); listos para recibir los modelos del equipo |
@@ -103,6 +106,16 @@ godot --headless --path juego --script res://tests/validar_datos.gd
 # Recorre la Escena 1 completa simulando al jugador (29 comprobaciones, incluida la colisión del piso)
 godot --headless --path juego res://tests/prueba_flujo.tscn
 ```
+
+Estas pruebas corren solas en GitHub Actions (`.github/workflows/pruebas.yml`) en cada push a `main`/`develop` y en cada
+pull request, junto con:
+
+- **Datos y scripts:** todos los JSON/JSONL del repositorio bien formados y los scripts de Python sin errores de sintaxis.
+- **Ciudad Charcas 1809:** el piloto automático recorre los 8 pasos de la historia (`godot --headless --path godot -- --piloto`);
+  se activa cuando la carpeta `godot/` está en la rama.
+- **Web:** `npm run lint`, `tsc --noEmit` y `npm run build` en `web/`.
+
+El resultado de cada job (fuentes y fichas, pasos comprobados, pasos de la historia) queda en el resumen de la ejecución.
 
 ## Política de fuentes
 

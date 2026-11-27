@@ -11,6 +11,12 @@ const VISTAS := [
 	{"nombre": "4_sala_mayor", "desde": Vector3(0.0, 1.6, -13.0), "hacia": Vector3(0.0, 2.4, -36.0)},
 	{"nombre": "5_presidencia", "desde": Vector3(3.2, 1.6, -27.0), "hacia": Vector3(0.0, 1.6, -34.0)},
 	{"nombre": "6_desde_el_coro", "desde": Vector3(4.5, 1.6, -33.5), "hacia": Vector3(-1.0, 3.2, -14.0)},
+	# Personajes de la Escena 1, de frente y a la altura de los ojos
+	{"nombre": "7_mendizabal", "desde": Vector3(-2.2, 1.6, 6.3), "hacia": Vector3(-3.0, 1.2, 4.0)},
+	{"nombre": "8_diputado_peru", "desde": Vector3(-5.0, 1.6, -3.7), "hacia": Vector3(-5.8, 1.2, -6.0)},
+	{"nombre": "9_diputado_rioplata", "desde": Vector3(8.4, 3.1, -0.7), "hacia": Vector3(9.2, 2.7, -3.0)},
+	{"nombre": "10_olaneta", "desde": Vector3(-3.4, 1.6, -25.7), "hacia": Vector3(-4.2, 1.2, -28.0)},
+	{"nombre": "11_serrano", "desde": Vector3(0.8, 1.6, -30.9), "hacia": Vector3(0.0, 1.2, -33.2)},
 ]
 
 

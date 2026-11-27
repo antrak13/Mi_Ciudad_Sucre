@@ -1,0 +1,179 @@
+# Pruebas automáticas del repositorio. Corren en cada push a main/develop y en cada pull request.
+# Cada job escribe su resultado en el resumen de la ejecución (pestaña Actions → la ejecución → Summary).
+# Los binarios van por Git LFS: cada job baja solo la carpeta que necesita y la guarda en caché,
+# así no se gasta la cuota de LFS en cada ejecución.
+
+name: Pruebas
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: pruebas-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash # con pipefail: si Godot falla dentro de un `| tee`, el paso falla
+
+jobs:
+  datos:
+    name: Datos y scripts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JSON y JSONL bien formados
+        run: |
+          python3 - <<'EOF'
+          import json, os, subprocess, sys
+          archivos = subprocess.run(["git", "ls-files", "*.json", "*.jsonl"],
+                                    capture_output=True, text=True, check=True).stdout.split()
+          errores = []
+          for ruta in archivos:
+              with open(ruta, encoding="utf-8") as f:
+                  texto = f.read()
+              try:
+                  if ruta.endswith(".jsonl"):
+                      for linea in texto.splitlines():
+                          if linea.strip():
+                              json.loads(linea)
+                  else:
+                      json.loads(texto)
+              except json.JSONDecodeError as e:
+                  errores.append(f"{ruta}: {e}")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as resumen:
+              resumen.write(f"### Datos\n\n{len(archivos)} archivos JSON/JSONL revisados, {len(errores)} con errores.\n")
+          for error in errores:
+              print(f"::error::{error}")
+          sys.exit(1 if errores else 0)
+          EOF
+
+      - name: Scripts de Python sin errores de sintaxis
+        run: git ls-files -z '*.py' | xargs -0 -r python3 -m py_compile
+
+  juego:
+    name: Juego · datos históricos y recorrido de la Escena 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lista de binarios del juego
+        run: git lfs ls-files -l -I "juego/**" | cut -d' ' -f1 | sort > .lfs-juego.txt
+
+      - name: Caché de LFS del juego
+        uses: actions/cache@v4
+        with:
+          path: .git/lfs/objects
+          key: lfs-juego-${{ hashFiles('.lfs-juego.txt') }}
+
+      - name: Bajar binarios del juego (LFS)
+        run: git lfs pull --include="juego/**"
+
+      - uses: ./.github/actions/godot
+
+      - name: Importar el proyecto
+        run: timeout 300 godot --headless --path juego --import
+
+      - name: Fuentes, fichas y escenas consistentes
+        run: |
+          timeout 120 godot --headless --path juego --script res://tests/validar_datos.gd | tee "$RUNNER_TEMP/datos.txt"
+          {
+            echo "### Fuentes y fichas"
+            echo '```'
+            grep -E "^(Fuentes|Fichas|OK|ERROR)" "$RUNNER_TEMP/datos.txt" || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Recorrido completo de la Escena 1 (Asamblea de 1825)
+        run: |
+          timeout 300 godot --headless --path juego res://tests/prueba_flujo.tscn | tee "$RUNNER_TEMP/flujo.txt"
+          {
+            echo "### Recorrido de la Escena 1"
+            echo '```'
+            grep -E "^\s+(ok|XX) |Pasos comprobados|Fichas desbloqueadas" "$RUNNER_TEMP/flujo.txt" || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  historia-1809:
+    name: Ciudad Charcas 1809 · historia de principio a fin
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      # El proyecto godot/ llega con la rama feat/ciudad-charcas-1809; mientras no esté, el job no hace nada.
+      - name: Lista de binarios de 1809
+        if: hashFiles('godot/project.godot') != ''
+        run: git lfs ls-files -l -I "godot/**" | cut -d' ' -f1 | sort > .lfs-1809.txt
+
+      - name: Caché de LFS de 1809
+        if: hashFiles('godot/project.godot') != ''
+        uses: actions/cache@v4
+        with:
+          path: .git/lfs/objects
+          key: lfs-1809-${{ hashFiles('.lfs-1809.txt') }}
+
+      - name: Bajar binarios de 1809 (LFS)
+        if: hashFiles('godot/project.godot') != ''
+        run: git lfs pull --include="godot/**"
+
+      - if: hashFiles('godot/project.godot') != ''
+        uses: ./.github/actions/godot
+
+      - name: Importar el proyecto
+        if: hashFiles('godot/project.godot') != ''
+        run: timeout 600 godot --headless --path godot --import
+
+      - name: Piloto automático recorre los 8 pasos de la historia
+        if: hashFiles('godot/project.godot') != ''
+        run: |
+          timeout 600 godot --headless --path godot -- --piloto | tee "$RUNNER_TEMP/piloto.txt"
+          {
+            echo "### Historia de 1809 (piloto automático)"
+            echo '```'
+            grep -E "^\[(paso|fin)\]" "$RUNNER_TEMP/piloto.txt" || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          grep -q "^\[fin\] la historia terminó" "$RUNNER_TEMP/piloto.txt" \
+            || { echo "::error::El piloto no llegó al final de la historia"; exit 1; }
+
+  web:
+    name: Web · lint, tipos y build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        if: hashFiles('web/package.json') != ''
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Instalar dependencias
+        if: hashFiles('web/package.json') != ''
+        run: npm ci --no-audit --no-fund
+
+      - name: Lint
+        if: hashFiles('web/package.json') != ''
+        run: npm run lint
+
+      - name: Tipos (TypeScript)
+        if: hashFiles('web/package.json') != ''
+        run: npx tsc --noEmit
+
+      - name: Build de producción
+        if: hashFiles('web/package.json') != ''
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+        run: npm run build

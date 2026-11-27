@@ -17,6 +17,7 @@ build/
 # Generados (se rehacen con los comandos del README)
 ciudad3d/datos/
 /web/public/ciudad3d/
+/web/public/asamblea/
 web/public/models/opt/
 web/public/models/raw/
 web/public/models/ciudad/claude/base_teselas/
@@ -29,6 +30,9 @@ movil/crudo/
 /web/public/descargas/*.apk
 /revisiones/
 coordinacion/revisiones/R*/
+
+# Planificación interna del equipo (rúbrica, costos, estrategia): no se publica
+planificacion/
 
 # Secretos: llaves de firma y presets con contraseñas (NUNCA se suben)
 ciudad3d/export_presets.cfg

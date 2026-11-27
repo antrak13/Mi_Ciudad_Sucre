@@ -35,6 +35,9 @@ var _capa_modal: ColorRect
 var _panel_modal: PanelContainer
 var _modal_abierto := false
 var _diario_abierto := false
+var _cronista_abierto := false
+var _cliente_cronista: ClienteCronista
+var _historial_cronista: Array[Dictionary] = []   # {quien, texto, fuentes} de esta partida
 
 
 func _ready() -> void:
@@ -42,6 +45,8 @@ func _ready() -> void:
 	_tema = _crear_tema()
 	_construir_hud()
 	_construir_modal()
+	_cliente_cronista = ClienteCronista.new()
+	add_child(_cliente_cronista)
 
 
 func configurar(nuevo_jugador: Jugador, nuevo_gestor: GestorMisiones) -> void:
@@ -66,6 +71,96 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif not _modal_abierto:
 			_mostrar_diario()
 		get_viewport().set_input_as_handled()
+	elif event is InputEventKey and event.pressed and not event.echo:
+		var tecla := (event as InputEventKey).physical_keycode
+		if tecla == KEY_C and not _modal_abierto and get_tree().get_first_node_in_group("cronista") != null:
+			abrir_cronista()
+			get_viewport().set_input_as_handled()
+		elif tecla == KEY_ESCAPE and _cronista_abierto:
+			_cerrar_cronista()
+			get_viewport().set_input_as_handled()
+
+
+# --- El cronista: preguntas libres sobre la historia ----------------------------
+
+func abrir_cronista() -> void:
+	var caja := _caja()
+	caja.add_child(_etiqueta("EL CRONISTA", 14, COLOR_DORADO))
+	caja.add_child(_parrafo("Pregúntame por la Asamblea de 1825, la Casa de la Libertad o la historia de Charcas. Respondo solo con lo que dicen mis fuentes, y te digo cuáles son.", 19, COLOR_TENUE))
+	var conversacion := VBoxContainer.new()
+	conversacion.add_theme_constant_override("separation", 10)
+	caja.add_child(conversacion)
+	for mensaje in _historial_cronista:
+		_agregar_mensaje(conversacion, mensaje)
+	var fila := HBoxContainer.new()
+	fila.add_theme_constant_override("separation", 10)
+	var entrada := LineEdit.new()
+	entrada.placeholder_text = "Escribe tu pregunta y presiona Enter"
+	entrada.max_length = 300
+	entrada.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	entrada.custom_minimum_size = Vector2(0, 44)
+	fila.add_child(entrada)
+	var enviar := func() -> void: _preguntar_al_cronista(entrada, conversacion)
+	entrada.text_submitted.connect(func(_t: String) -> void: enviar.call())
+	fila.add_child(_boton("Preguntar", enviar))
+	caja.add_child(fila)
+	caja.add_child(_boton("Cerrar (Esc)", _cerrar_cronista))
+	_abrir_modal(caja, true)
+	_cronista_abierto = true
+	entrada.grab_focus.call_deferred()
+
+
+func _cerrar_cronista() -> void:
+	_cronista_abierto = false
+	_cronista_hablando(false)
+	_cerrar_modal()
+
+
+func _preguntar_al_cronista(entrada: LineEdit, conversacion: VBoxContainer) -> void:
+	var pregunta := entrada.text.strip_edges()
+	if pregunta.is_empty() or not entrada.editable:
+		return
+	entrada.text = ""
+	entrada.editable = false
+	var tuya := {"quien": "tu", "texto": pregunta, "fuentes": []}
+	_historial_cronista.append(tuya)
+	_agregar_mensaje(conversacion, tuya)
+	var pensando := _parrafo("El cronista busca en sus fuentes…", 18, COLOR_TENUE)
+	conversacion.add_child(pensando)
+	_cronista_hablando(true)
+	var datos := await _cliente_cronista.preguntar(pregunta)
+	if not is_instance_valid(conversacion):
+		return   # se cerró la ventana mientras respondía
+	pensando.queue_free()
+	var suya := {"quien": "cronista", "texto": str(datos.get("error", datos.get("respuesta", ""))), "fuentes": datos.get("fuentes", [])}
+	_historial_cronista.append(suya)
+	_agregar_mensaje(conversacion, suya)
+	entrada.editable = true
+	entrada.grab_focus()
+	get_tree().create_timer(4.0).timeout.connect(func() -> void: _cronista_hablando(false))
+
+
+func _agregar_mensaje(conversacion: VBoxContainer, mensaje: Dictionary) -> void:
+	var es_cronista := str(mensaje.get("quien", "")) == "cronista"
+	var texto := _texto_enriquecido(20)
+	texto.custom_minimum_size.x = 700
+	var quien := "[color=%s][b]El cronista:[/b][/color] " % HEX_DORADO if es_cronista else "[b]Tú:[/b] "
+	var bb := quien + _escapar(str(mensaje.get("texto", "")))
+	for fuente: Dictionary in mensaje.get("fuentes", []):
+		var detalle := "[%d] %s" % [int(fuente.get("n", 0)), _escapar(str(fuente.get("fuente", "")))]
+		var url := str(fuente.get("url", ""))
+		bb += "\n[color=%s][font_size=15]%s[/font_size][/color]" % [HEX_TENUE, ("[url=%s]%s[/url]" % [url, detalle]) if url.begins_with("https://") else detalle]
+	texto.text = bb
+	texto.meta_clicked.connect(func(meta: Variant) -> void:
+		if str(meta).begins_with("https://"):
+			OS.shell_open(str(meta)))
+	conversacion.add_child(texto)
+
+
+func _cronista_hablando(si: bool) -> void:
+	var cronista := get_tree().get_first_node_in_group("cronista")
+	if cronista != null:
+		cronista.set("hablando", si)
 
 
 # --- Pantallas -----------------------------------------------------------------
@@ -157,7 +252,7 @@ func _mostrar_bienvenida() -> void:
 	caja.add_child(_parrafo(str(datos.get("aviso_recreacion", "")), 17, COLOR_TENUE))
 	caja.add_child(HSeparator.new())
 	var controles := _texto_enriquecido(17)
-	controles.text = "[b]WASD[/b] moverse   [b]Shift[/b] correr   [b]Espacio[/b] saltar   [b]E[/b] usar\n[b]R[/b] inspeccionar lo que tienes en la mano   [b]Tab[/b] diario de fichas y fuentes\nHaz clic en la pantalla para controlar la cámara. [b]Esc[/b] libera el ratón."
+	controles.text = "[b]WASD[/b] moverse   [b]Shift[/b] correr   [b]Espacio[/b] saltar   [b]E[/b] usar\n[b]R[/b] inspeccionar lo que tienes en la mano   [b]Tab[/b] diario de fichas y fuentes\n[b]C[/b] pregúntale al cronista, que camina contigo\nHaz clic en la pantalla para controlar la cámara. [b]Esc[/b] libera el ratón."
 	caja.add_child(controles)
 	caja.add_child(_boton("Comenzar", _cerrar_modal))
 	_abrir_modal(caja)

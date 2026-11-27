@@ -73,6 +73,9 @@ export default function Experiencia() {
         setNoche(e.hora === "noche");
       } else if (e.tipo === "elegida") {
         rev.elegir(e.id as string);
+      } else if (e.tipo === "viajar" && e.destino === "asamblea_1825") {
+        // [H] en el Salón de la Independencia del museo (portal_1825.gd): el juego de la Asamblea de 1825
+        window.location.assign("/asamblea");
       }
     });
     motor.iniciar(lienzo.current!, (f) => { setFraccion(f * 0.5); avisar(f * 0.5); setDetalle("Descargando el motor…"); })

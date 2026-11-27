@@ -37,6 +37,7 @@ func _ready() -> void:
 
 	_crear_overlay_controles()
 	_configurar_portal_regreso_si_aplica()
+	add_child(PortalAsamblea1825.new())   # [H] en el Salón: viaje al juego de la Asamblea de 1825 (portal_1825.gd)
 
 	var h_env := OS.get_environment("SUCRE_HORA")
 	if h_env != "" and Hora.ATMOSFERAS.has(h_env):

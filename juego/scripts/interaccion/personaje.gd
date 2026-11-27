@@ -12,9 +12,21 @@ extends Interactuable
 @export var modelo: PackedScene
 ## Animación que se reproduce en bucle si el modelo trae un AnimationPlayer.
 @export var animacion_reposo := "idle"
+## Animación mientras conversa con el jugador (si el modelo la trae).
+@export var animacion_hablar := "hablar"
+## Gira la cabeza y el cuerpo hacia el jugador cuando está cerca.
+@export var mirar_al_jugador := true
+
+const RADIO_MIRAR := 5.0
+const RADIO_SOLTAR := 6.5           # al alejarse más que esto, deja de hablar aunque el diálogo no se cerrara
+const GIRO_POR_SEGUNDO := 4.0
 
 var es_ficticio := false
 var _etiqueta: Label3D
+var _modelo: Node3D
+var _reproductor: AnimationPlayer
+var _jugador: Node3D
+var _hablando := false
 
 
 func _ready() -> void:
@@ -22,6 +34,53 @@ func _ready() -> void:
 	super()
 	verbo = "Hablar con"
 	add_to_group("personajes")
+	EstadoJuego.solicitud_dialogo.connect(_al_empezar_dialogo)
+	EstadoJuego.evento_registrado.connect(_al_registrar)
+
+
+func _process(delta: float) -> void:
+	if _modelo == null or not mirar_al_jugador:
+		return
+	if _jugador == null:
+		_jugador = get_tree().get_first_node_in_group("jugador") as Node3D
+		if _jugador == null:
+			return
+	var hacia := _jugador.global_position - global_position
+	hacia.y = 0.0
+	var distancia := hacia.length()
+	if _hablando and distancia > RADIO_SOLTAR:
+		_dejar_de_hablar()
+	# Giro del modelo (no del cuerpo de colisión): hacia el jugador si está cerca, si no a su orientación original.
+	var objetivo := 0.0
+	if distancia < RADIO_MIRAR and distancia > 0.01:
+		var local := global_transform.basis.inverse() * hacia
+		objetivo = atan2(local.x, local.z)
+	_modelo.rotation.y = lerp_angle(_modelo.rotation.y, objetivo, clampf(GIRO_POR_SEGUNDO * delta, 0.0, 1.0))
+
+
+func _al_empezar_dialogo(personaje_id: String) -> void:
+	if personaje_id != id_interaccion:
+		return
+	_hablando = true
+	_reproducir(animacion_hablar)
+
+
+func _al_registrar(tipo: String, id: String) -> void:
+	if tipo == "hablar" and id == id_interaccion:
+		_dejar_de_hablar()
+
+
+func _dejar_de_hablar() -> void:
+	_hablando = false
+	_reproducir(animacion_reposo)
+
+
+## Reproduce en bucle una animación del modelo con un fundido corto; si no la tiene, no hace nada.
+func _reproducir(nombre: String) -> void:
+	if _reproductor == null or not _reproductor.has_animation(nombre):
+		return
+	_reproductor.get_animation(nombre).loop_mode = Animation.LOOP_LINEAR
+	_reproductor.play(nombre, 0.35)
 
 
 ## Recibe nombre, rol y si es ficticio desde los datos de la escena.
@@ -70,15 +129,16 @@ func _cargar_modelo() -> void:
 	var instancia := modelo.instantiate()
 	instancia.name = "Modelo"
 	add_child(instancia)
-	var reproductor := instancia.find_child("AnimationPlayer", true, false) as AnimationPlayer
-	if reproductor == null:
+	_modelo = instancia as Node3D
+	_reproductor = instancia.find_child("AnimationPlayer", true, false) as AnimationPlayer
+	if _reproductor == null:
 		return
-	var nombre := animacion_reposo if reproductor.has_animation(animacion_reposo) else ""
-	if nombre.is_empty() and not reproductor.get_animation_list().is_empty():
-		nombre = reproductor.get_animation_list()[0]
-	if not nombre.is_empty():
-		reproductor.get_animation(nombre).loop_mode = Animation.LOOP_LINEAR
-		reproductor.play(nombre)
+	if not _reproductor.has_animation(animacion_reposo) and not _reproductor.get_animation_list().is_empty():
+		animacion_reposo = _reproductor.get_animation_list()[0]
+	_reproducir(animacion_reposo)
+	# Cada personaje arranca en otro punto del ciclo, para que no respiren todos a la vez.
+	if _reproductor.is_playing():
+		_reproductor.seek(randf() * _reproductor.current_animation_length, true)
 
 
 func _crear_etiqueta(rol: String) -> void:

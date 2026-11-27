@@ -15,6 +15,7 @@
     "trafico": "node scripts/preparar_vehiculos.mjs && python3 scripts/red_vial.py",
     "ciudad": "node ../ciudad3d/herramientas/exportar.mjs web",
     "ciudad:apk": "node ../ciudad3d/herramientas/exportar.mjs apk",
+    "asamblea": "mkdir -p public/asamblea && ${GODOT:-godot} --headless --path ../juego --export-release Web ../web/public/asamblea/index.html",
     "ciudad:minimapa": "SUCRE_MINIMAPA=1 ${GODOT:-$HOME/apps/godot/Godot_v4.7.2-stable_linux.x86_64} --path ../ciudad3d --rendering-method gl_compatibility --resolution 640x480",
     "predev": "node scripts/optimizar_modelos.mjs"
   },

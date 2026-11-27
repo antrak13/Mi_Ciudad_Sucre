@@ -39,6 +39,13 @@
 [ext_resource type="PackedScene" path="res://assets/modelos/wooden_lantern_01/wooden_lantern_01.gltf" id="g_wooden_lantern_01"]
 [ext_resource type="PackedScene" path="res://assets/modelos/planter_pot_clay/planter_pot_clay.gltf" id="g_planter_pot_clay"]
 [ext_resource type="PackedScene" path="res://assets/modelos/potted_plant_02/potted_plant_02.gltf" id="g_potted_plant_02"]
+[ext_resource type="PackedScene" path="res://assets/personajes/mendizabal.gltf" id="pj_mendizabal"]
+[ext_resource type="PackedScene" path="res://assets/personajes/diputado_peru.gltf" id="pj_diputado_peru"]
+[ext_resource type="PackedScene" path="res://assets/personajes/diputado_rioplata.gltf" id="pj_diputado_rioplata"]
+[ext_resource type="PackedScene" path="res://assets/personajes/olaneta.gltf" id="pj_olaneta"]
+[ext_resource type="PackedScene" path="res://assets/personajes/serrano.gltf" id="pj_serrano"]
+[ext_resource type="Script" path="res://scripts/interaccion/cronista.gd" id="s_cronista"]
+[ext_resource type="PackedScene" path="res://assets/personajes/cronista.gltf" id="pj_cronista"]
 
 [sub_resource type="PanoramaSkyMaterial" id="cielo_mat"]
 panorama = ExtResource("t_cielo")
@@ -340,6 +347,8 @@ light_cull_mask = 4294967293
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
 script = ExtResource("s_pers")
 id_interaccion = "mendizabal"
+modelo = ExtResource("pj_mendizabal")
+animacion_reposo = "manos_juntas"
 tipo_firma = "firma"
 
 [node name="Modelo" type="MeshInstance3D" parent="Personajes/Mendizabal"]
@@ -350,6 +359,8 @@ mesh = SubResource("malla_npc_real")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0, -6)
 script = ExtResource("s_pers")
 id_interaccion = "diputado_peru"
+modelo = ExtResource("pj_diputado_peru")
+animacion_reposo = "reposo"
 tipo_firma = "firma"
 
 [node name="Modelo" type="MeshInstance3D" parent="Personajes/DiputadoPeru"]
@@ -360,6 +371,8 @@ mesh = SubResource("malla_npc_fict")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, 1.5, -3)
 script = ExtResource("s_pers")
 id_interaccion = "diputado_rioplata"
+modelo = ExtResource("pj_diputado_rioplata")
+animacion_reposo = "reposo"
 tipo_firma = "firma"
 
 [node name="Modelo" type="MeshInstance3D" parent="Personajes/DiputadoRioPlata"]
@@ -370,6 +383,8 @@ mesh = SubResource("malla_npc_fict")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, -28)
 script = ExtResource("s_pers")
 id_interaccion = "olaneta"
+modelo = ExtResource("pj_olaneta")
+animacion_reposo = "orador"
 tipo_firma = "firma"
 
 [node name="Modelo" type="MeshInstance3D" parent="Personajes/Olaneta"]
@@ -380,12 +395,19 @@ mesh = SubResource("malla_npc_real")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.2)
 script = ExtResource("s_pers")
 id_interaccion = "serrano"
+modelo = ExtResource("pj_serrano")
+animacion_reposo = "reposo"
 tipo_firma = "firma_presidente"
 firmas_requeridas = 3
 
 [node name="Modelo" type="MeshInstance3D" parent="Personajes/Serrano"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
 mesh = SubResource("malla_npc_real")
+
+[node name="Cronista" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0.05, 9.3)
+script = ExtResource("s_cronista")
+modelo = ExtResource("pj_cronista")
 
 [node name="Objetos" type="Node3D" parent="."]
 
