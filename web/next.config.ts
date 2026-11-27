@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
       // (ciudad.json, sin hash, siempre se revalida)
       // (shaders.json: los programas que la página precompila mientras baja el motor, ver motor/precompilar.ts)
       { source: "/ciudad3d/shaders.json", headers: [{ key: "Cache-Control", value: "public, max-age=300, must-revalidate" }] },
-      { source: "/ciudad3d/sucre.:ext(wasm|pck|js)", headers: [{ key: "Cache-Control", value: "public, max-age=300, must-revalidate" }] },
+      { source: "/ciudad3d/:archivo(sucre.wasm|sucre.pck|sucre.js|historica.pck)", headers: [{ key: "Cache-Control", value: "public, max-age=300, must-revalidate" }] },
       { source: "/ciudad3d/datos/:archivo*.bin", headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }] },
       { source: "/ciudad3d/datos/ciudad.json", headers: [{ key: "Cache-Control", value: "no-cache" }] },
       {

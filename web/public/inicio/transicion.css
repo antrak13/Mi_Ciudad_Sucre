@@ -18,3 +18,10 @@ body.entrando.revelando #ciudad-fondo{filter:blur(16px) brightness(1.25);transfo
 body.entrando.dentro .luz-entrada{transition:opacity 1.5s ease .1s;opacity:0}
 body.entrando.dentro .vineta-entrada{transition:opacity 1s ease;opacity:0}
 @media (prefers-reduced-motion:reduce){body.entrando .opening{transition:none;transform:none;filter:none}body.entrando .luz-entrada{transition:opacity .4s}body.entrando.dentro #ciudad-fondo{transition:opacity .4s}body.entrando.revelando #ciudad-fondo{filter:none;transform:none}}
+/* si la ciudad todavía se descarga al terminar el travelling: avance real sobre la luz */
+.avance-entrada{position:fixed;left:50%;bottom:12vh;z-index:75;transform:translateX(-50%);margin:0;pointer-events:none;opacity:0;
+  transition:opacity .6s ease;display:grid;gap:10px;justify-items:center;font:500 13px/1.2 system-ui,sans-serif;letter-spacing:.14em;
+  text-transform:uppercase;color:#3d3326}
+.avance-entrada i{display:block;width:180px;height:2px;background:rgba(61,51,38,.18);overflow:hidden}
+.avance-entrada b{display:block;height:100%;width:100%;background:#3d3326;transform-origin:left;transform:scaleX(var(--avance,0));transition:transform .4s ease}
+body.esperando-ciudad .avance-entrada{opacity:.85}

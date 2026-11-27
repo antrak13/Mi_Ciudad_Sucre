@@ -55,9 +55,14 @@ export default function Experiencia() {
     setEmbebido(q.has("embebido"));
     setTaller(q.has("taller"));
     setNoche((q.get("hora") ?? "") === "noche");
+    // embebida en la portada: el avance se le pasa a la transición para que la luz no parezca detenida
+    const avisar = (f: number) => {
+      if (q.has("embebido")) window.parent.postMessage({ sucre: "avance", fraccion: f }, window.location.origin);
+    };
     const quitar = motor.escuchar((e) => {
       if (e.tipo === "progreso") {
         setFraccion(0.5 + (e.fraccion as number) * 0.5);
+        avisar(0.5 + (e.fraccion as number) * 0.5);
         setDetalle("Armando la ciudad…");
       } else if (e.tipo === "lista") {
         setLista(true);
@@ -73,7 +78,7 @@ export default function Experiencia() {
         window.location.assign("/asamblea");
       }
     });
-    motor.iniciar(lienzo.current!, (f) => { setFraccion(f * 0.5); setDetalle("Descargando el motor…"); })
+    motor.iniciar(lienzo.current!, (f) => { setFraccion(f * 0.5); avisar(f * 0.5); setDetalle("Descargando el motor…"); })
       .catch((e) => setError(String(e?.message ?? e)));
     return () => { quitar(); motor.detener(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
