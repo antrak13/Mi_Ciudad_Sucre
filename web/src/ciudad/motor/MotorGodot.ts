@@ -100,7 +100,9 @@ export class MotorGodot {
         canvas: lienzo,
         canvasResizePolicy: 2,          // ocupa toda la ventana (la página es de pantalla completa)
         focusCanvas: true,
-        args: [],
+        // por http (sin contexto seguro) el navegador no ofrece AudioWorklet y el motor se caía al iniciar el audio
+        // ("reading 'addModule'"): ahí se usa ScriptProcessor
+        args: window.isSecureContext ? [] : ["--audio-driver", "ScriptProcessor"],
         ensureCrossOriginIsolationHeaders: false,
         fileSizes: {},
       });
