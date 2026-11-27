@@ -44,7 +44,7 @@ func descargar() -> void:
 	if OS.has_feature("web"):
 		origen = str(JavaScriptBridge.eval("location.origin", true))
 	_http = HTTPRequest.new()
-	_http.download_file = DESTINO
+	_http.body_size_limit = 64 * 1024 * 1024
 	_http.use_threads = false
 	add_child(_http)
 	_http.request_completed.connect(_al_terminar)
@@ -61,14 +61,22 @@ func _process(_d: float) -> void:
 			avance.emit(float(_http.get_downloaded_bytes()) / float(total))
 
 
-func _al_terminar(resultado: int, codigo: int, _h: PackedStringArray, _b: PackedByteArray) -> void:
+func _al_terminar(resultado: int, codigo: int, _h: PackedStringArray, cuerpo: PackedByteArray) -> void:
 	_descargando = false
 	set_process(false)
 	if resultado != HTTPRequest.RESULT_SUCCESS or codigo != 200:
 		push_warning("PaqueteHistorico: descarga fallida (%d, HTTP %d)" % [resultado, codigo])
 		return
+	# se escribe y se cierra antes de montar (con download_file el archivo seguía abierto y el montaje fallaba)
+	var f := FileAccess.open(DESTINO, FileAccess.WRITE)
+	if f == null:
+		push_warning("PaqueteHistorico: no se pudo escribir %s (%d)" % [DESTINO, FileAccess.get_open_error()])
+		return
+	f.store_buffer(cuerpo)
+	f.close()
 	if not ProjectSettings.load_resource_pack(DESTINO, true):
 		push_warning("PaqueteHistorico: no se pudo montar " + DESTINO)
 		return
 	_montado = true
+	print("PaqueteHistorico: escenas históricas montadas, museo disponible=", ResourceLoader.exists(PRUEBA))
 	listo.emit()
